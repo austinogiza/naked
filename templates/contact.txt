@@ -1,0 +1,10 @@
+Contact Name: 
+{{ name }}
+Email:
+{{ email }}
+Phone:
+{{ phone  }}
+Subject:
+{{ subject  }}
+Message:
+{{ message }}
