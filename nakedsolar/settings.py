@@ -30,11 +30,13 @@ INSTALLED_APPS = [
     'django_countries',
     'crispy_forms',
     'sorl.thumbnail',
-    'paystack',
+    "paystack",
+    'django_paystack',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'details'
 
 ]
 

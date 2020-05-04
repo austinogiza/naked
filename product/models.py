@@ -97,9 +97,11 @@ class Order(models.Model):
 class BillingAddress(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
+    name =  models.CharField(max_length=50,blank=True)
     street_address =  models.CharField(max_length=200)
     zip = models.CharField(max_length=100)
-    country = CountryField(multiple=False)
+    country = models.CharField(max_length=200,blank=True)
+    state =  models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -133,3 +135,11 @@ class ContactMessage(models.Model):
     
     
     
+class CustomerInfo(models.Model):
+    full_name= models.CharField(max_length=150)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=20)
+    address = models.CharField(max_length=150)
+    
+    def __str__(self):
+        return self.full_name

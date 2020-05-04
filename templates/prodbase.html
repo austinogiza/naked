@@ -11,6 +11,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     {% block style %}
     {% endblock %}
 
@@ -24,10 +25,10 @@
     <link rel="stylesheet" href="{%static 'fontawesome-free-5.10.0-web/css/all.css'%}" />
     <link rel="stylesheet" href="{%static 'fontawesome-free-5.10.0-web/css/fontawesome.css'%}" />
     <link rel="stylesheet" href="{%static 'fontawesome-free-5.10.0-web/webfonts'%}" />
-    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.woff'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.woff2'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.eot'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.woff' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.woff2' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.eot' %}">
 
 
 
@@ -67,12 +68,15 @@
 
 <body>
     <div>
+
+
+
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark green scrolling-navbar">
             <div class="container">
 
                 <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="{% url 'product:home' %}">
+                <a class="navbar-brand waves-effect" href="{% url 'details:home' %}">
                     <strong class="blue-text">
                         <img src="{% static 'img/log.png' %}" class="rounded-circle z-depth-0" alt="avatar image"
                             height="45">
@@ -92,12 +96,12 @@
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item avatar mr-3">
-                            <a class="nav-link p-0" href="{% url 'product:home' %}">
+                            <a class="nav-link p-0" href="{% url 'details:home' %}">
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'product:home' %}">Home
+                            <a class="nav-link waves-effect" href="{% url 'details:home' %}">Home
 
                             </a>
                         </li>
@@ -107,7 +111,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'product:about' %}">About
+                            <a class="nav-link waves-effect" href="{% url 'details:about' %}">About
                             </a>
                         </li>
 
@@ -116,9 +120,10 @@
                                 aria-haspopup="true" aria-expanded="false"> Naked Truth
                             </a>
                             <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">The Journey</a>
+                                <a class="dropdown-item" href="{% url 'details:phcn'%}">PHCN Tariff</a>
+
+                                <a class="dropdown-item" href="{% url 'details:faq'%}">FAQ</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -143,7 +148,8 @@
 
 
                                 <span class="clearfix d-none d-sm-inline-block"> Logout <i
-                                        class="fas fa-sign-out-alt"></i> </span>
+                                        class="fas fa-sign-out-alt"></i>
+                                </span>
                             </a>
 
 
@@ -208,16 +214,16 @@
                     <div class="mb-5 flex-center">
 
                         <!-- Facebook -->
-                        <a class="fb-ic">
+                        <a href="" class="fb-ic">
                             <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!-- Twitter -->
-                        <a class="tw-ic">
-                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        <a href="" class="tw-ic">
+                            <i class="fab fa-whatsapp fa-lg white-text mr-md-5 mr-3 fa-2x" target="_blank"> </i>
                         </a>
 
                         <!--Instagram-->
-                        <a class="ins-ic">
+                        <a href="" class="ins-ic">
                             <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
 
@@ -233,7 +239,7 @@
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="{% url 'product:home'%}"> Naked Solar Limited</a>
+            <a href="{% url 'details:home'%}"> Naked Solar Limited</a>
         </div>
         <!-- Copyright -->
 
@@ -241,7 +247,7 @@
     <!-- Footer -->
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script type="text/javascript" src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
     <!-- Bootstrap core JavaScript -->

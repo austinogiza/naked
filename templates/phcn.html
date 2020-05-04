@@ -1,0 +1,82 @@
+{% extends 'prodbase.html' %}
+
+{% load static %}
+{% block style %}
+<title>PHCN Tariffs - Naked Solar Limited </title>
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+{% endblock %}
+{% block content %}
+<section class="about-hero">
+
+    <div class="contain container mt-4">
+        <div class="descrip">
+            <h1>PHCN Tariffs</h1>
+            <p>The Nigerian Electricity Regulatory Commission (NERC) announced the immediate review of electricity
+                tariffs in the country from January 1st 2020. </p>
+        </div>
+        <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+    </div>
+
+</section>
+<main>
+    <section class="about-why">
+
+        <div class="contain container mt-3">
+            <div class="title text-center">
+                <h1>What Does It Mean?</h1>
+                <h2 class="mt-2">We are getting there</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="energy">
+        <div class="body">
+            <p>The order was issued to the 11 electricity distribution companies (DISCos) on December 31, 2019, but
+                published on the Commission’s website on Saturday.
+                Signed jointly by the Chairman of the Commission, Joseph Momoh, and the Commissioner for Legal, License
+                & Compliance, Dafe Akpeneye, the order was titled “December 2019 MYTO Minor Review Order” for the 11
+                DISCOs.
+            </p>
+        </div>
+
+    </section>
+    <section class="about-why">
+
+        <div class="contain container mt-5 mb-2">
+
+            <div class="body mt-5 mb-4">
+                <div class="sepa-image">
+                    <img src="{% static 'img/end.png'%}" alt="">
+                </div>
+                <div class="sepa">
+                    <h1 class="mt-2">How does this affect you? </h1>
+                    <h3 class="mt-2"> </h3>
+                    <p class="mt-2">The affected DISCos include Abuja Electricity Distribution Company, Benin
+                        Electricity Distribution Company, Enugu Electricity Distribution Company, Eko Electricity
+                        Distribution Company, Ibadan Electricity Distribution Company, Ikeja Electricity Distribution
+                        Company, Jos Electricity Distribution Company, Kaduna Electricity Distribution Company, Kano
+                        Electricity Distribution Company, Port Harcourt Electricity Distribution Company and Yola
+                        Electricity Distribution Company. The order, the Commission said, supersedes “other orders
+                        issued on the subject matter, and shall take effect from January 1, 2020.
+                        Under the new tariff order, commercial customers who have been paying between N20.45 and N27.20
+                        per kWh since 2015 will now be paying between N37.39 and N47.09 per kWh.
+                        Their industrial customers who have been paying between N20.95 and N27.22 per kWh in Abuja, will
+                        now be paying between N36.07 and N47.09 per kWh under the new dispensation.
+                        Also, those in the special category who have been paying about N20.06 per kWh in Abuja since
+                        2015, will now be paying about N35.74 per kWh.
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cont text-center ">
+
+        <a href="{% url 'product:contact' %}" type="button" class="btn orange mt-5">Contact Us</a>
+    </section>
+</main>
+{% endblock %}

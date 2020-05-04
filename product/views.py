@@ -7,21 +7,17 @@ from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm,CouponForm, ContactForm
-from django.http import HttpResponse
+from .forms import CheckoutForm,CouponForm, ContactForm,CustomerInfoForm
+from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
-from django.template.loader import get_template
+from django.template.loader import get_template, render_to_string
 # Create your views here.
 
 
 
-def home(request):
-    return render(request, 'home.html')
 
 
-def about(request):
-    return render(request, 'about.html')
     
 class HomeView(ListView):
     model = Item
@@ -44,23 +40,24 @@ class CheckoutView(View):
         context = {
             'form' :form,
             'couponform': CouponForm(),
-             'order' : order
+            'order' : order
         }
         return render(self.request, 'checkout-page.html',context)
     def post(self, *args, **kwargs):
-        form = CheckoutForm(self.request.POST or None )
+        form = CheckoutForm(self.request.POST or None)
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             if form.is_valid():
+                name = form.cleaned_data.get('name')
                 street_address = form.cleaned_data.get('street_address')
                 country = form.cleaned_data.get('country')
                 zip = form.cleaned_data.get('zip')
-                payment_option = form.cleaned_data.get('save_info')
-                #TODO
+                payment_option = form.cleaned_data.get('payment_option')  
                 # save_info = form.cleaned_data.get('save_info')
                
                 billing_address = BillingAddress(
                     user = self.request.user,
+                    name = name,
                     street_address = street_address,
                     zip=zip,
                     country=country
@@ -70,7 +67,7 @@ class CheckoutView(View):
                 order.save()
                 
                 if payment_option == 'P':
-                    return redirect('product:payment', payment_option='paystack')
+                    return redirect('product:paystack')
                 elif payment_option == 'PY':
                     return redirect('product:payment', payment_option='payu')
                 else:
@@ -80,17 +77,18 @@ class CheckoutView(View):
             messages.error(self.request, "You do not have an active order")
             return redirect("product:order")
 
-class PaymentView(View):
+
+class PaystackView(View):
     def get(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        if order.billing_address:
-            context = {
+        # if order.billing_address:
+        context = {
             'order' : order 
-            }
-            return render(self.request, 'payment.html', context)
-        else:
-            messages.warning(self.request, "You have not added billing address")
-            return redirect("product:checkout")
+        }
+        return render(self.request, 'paystack.html', context)
+        # else:
+        #     messages.warning(self.request, "You have not added billing address")
+        #     return redirect("product:checkout")
     
     def post(self,*args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
@@ -311,6 +309,14 @@ def contact(request):
 
         }
         context = template.render(content)
+        contact = ContactMessage(
+            name = name,
+            email = email,
+            phone= phone,
+            subject= subject,
+            message= message
+            )
+        contact.save()
         send_mail(
         'New Contact Form From Nakedsolar Contact Form',
         context,
@@ -350,3 +356,23 @@ class AddCouponView(View):
 
 
         
+
+
+def customer_info(request):
+    customer_form = CustomerInfoForm(request.POST)
+    if request.method == 'POST':
+        
+        if customer_form.is_valid() and customer_form.cleaned_data:
+            customer_form.save()
+            email = {
+            'email' : customer_form.email 
+            }
+            return render(request,"payment.html", email)
+        else:
+            return HttpResponse('Invalid input try again!!!')
+    else:
+        customer_form = CustomerInfoForm()
+        customer_form = {
+            'customer_form': customer_form
+            }
+    return render(request, 'customer_info.html',customer_form )

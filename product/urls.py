@@ -11,7 +11,7 @@ from .views import (HomeView,
  add_single_to_cart,
   remove_order_from_cart,
   CheckoutView,
- PaymentView,
+PaystackView,
 AddCouponView,
  add_home_to_cart
                     )
@@ -19,9 +19,6 @@ AddCouponView,
 app_name = 'product'
 
 urlpatterns = [
-     
-    path('', views.home, name='home'),
-       path('about/', views.about, name='about'),
     path('shop/', HomeView.as_view(), name='shop'),
     path('contact/', views.contact, name='contact'),
     path('products/<slug>/', ItemDetailView.as_view(), name='products'),
@@ -37,8 +34,10 @@ urlpatterns = [
          add_single_to_cart, name='add-single-item-to-cart'),
     path('remove-order-from-cart/<slug>/',
          remove_order_from_cart, name='remove-order-from-cart'),
-    path('payment/<payment_option>/',
-         PaymentView.as_view(), name='payment'),
+     path('customer_info/', views.customer_info,
+         name='customer_info'),
+      path('paystack/',
+          PaystackView.as_view(), name='paystack'),
 
   
 

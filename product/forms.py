@@ -1,6 +1,8 @@
 from django import forms
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
+from .models import CustomerInfo
+
 
 
 
@@ -13,15 +15,33 @@ COUNTRY_CHOICE =(
     ('N', "Nigeria")
 )
 
+STATE_CHOICES =(
+    ('')
+
+
+)
+
+
 COUNTRIES_ONLY = ['NG']
 
 class CheckoutForm(forms.Form):
+    name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Enter Your Full Name',
+        'class' : 'form-control'
+    }))
     street_address = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Enter Your Address',
         'class' : 'form-control'
     }))
-    country = forms.ChoiceField(widget=forms.Select(attrs={
-        'class':'custom-select d-block w-100'}), choices=COUNTRY_CHOICE)
+    country = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Select Country',
+        'class' : 'form-control'
+    }))
+    state = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Select State',
+        'class' : 'form-control'
+    }))
+    
     zip = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control'
     }))
@@ -61,3 +81,9 @@ class ContactForm(forms.Form):
         'resize': 'none'
 
     }), required=True)
+
+
+class CustomerInfoForm(forms.ModelForm):
+    class Meta:
+        model = CustomerInfo
+        fields = '__all__'

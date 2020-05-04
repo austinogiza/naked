@@ -37,7 +37,7 @@
                 <tr>
 
                     <td colspan="5">
-                        <a href="{% url 'product:home'%}" class="btn btn-green float-right ml-2">Continue
+                        <a href="{% url 'product:shop'%}" class="btn btn-green float-right ml-2">Continue
                             Shopping</a>
 
                     </td>
@@ -59,12 +59,14 @@
                 <tr>
 
                     <td colspan="5">
-                        <a href="{% url 'product:home'%}" class="btn btn-green float-right ml-2">Continue Shopping</a>
-                        <a href="{% url 'product:checkout' %}" class="btn btn-warning float-right">Proceed To
+                        <a href="{% url 'product:shop'%}" class="btn btn-green float-right ml-2">Continue Shopping</a>
+                        <a href="{% url 'product:checkout' %}" class="btn btn-orange float-right">Proceed To
                             Checkout</a>
                     </td>
                 </tr>
                 {% endif %}
+
+
             </tbody>
         </table>
     </div>
