@@ -1,16 +1,15 @@
 {% extends 'prodbase.html' %} {% load paystack %}{% load static %} {% block style %}
 
-<script src="http://js.paystack.co/v1/inline.js"></script>
 
 
 {% endblock %} {% block content %}
-
 <main>
 
-    <div class="container wow fadeIn">
+    <div class="container wow fadeIn mt-4">
 
         <!-- Heading -->
-        <h2 class="my-5 h2 text-center">Payment</h2>
+        <div class="mt-4"></div>
+        <h2 class="mt-5 h2 text-center mb-4">Payment With Paystack</h2>
 
         <!--Grid row-->
         <div class="row">
@@ -19,50 +18,10 @@
             <div class="col-md-12 mb-8">
 
                 <!--Card-->
-                <div class="card">
-
+                <div class="card text-center">
+                    {% paystack_button amount=amount email=email button_class="btn btn-green" %}
                     <!--Card content-->
-                    <form method="POST" class="card-body" id="paystack-card-form">
-                        {% csrf_token %}
-                        <!--Grid row-->
-                        <div class="row">
-                            <div class="field">
-                                <label class="label">Card Number</label>
-                                <p class="control">
-                                    <input class="input cc-num" value="4084084084084081" type="tel"
-                                        placeholder="0000 0000 0000 0000" required autofocus>
-                                </p>
-                            </div>
 
-                            <div class="columns is-mobile">
-                                <div class="column is-6 ">
-                                    <div class="field">
-                                        <label class="label">Expiry Date</label>
-                                        <p class="control has-icons-left has-icons-right">
-                                            <input class="input cc-exp" type="tel" value="11/22" placeholder="MM/YY"
-                                                required>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="column is-6">
-                                    <div class="field">
-                                        <label class="label">CVV</label>
-                                        <p class="control has-icons-left has-icons-right">
-                                            <input class="input cc-cvv" type="tel" value="408" placeholder="987"
-                                                required>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                <p class="control">
-                                    <button class="button btn-mydefault" type="submit">Submit Payment</button>
-                                </p>
-                            </div>
-                        </div>
-                        <button type='button' onclick='MakePayment()'>Make Payment</button>
-                    </form>
 
                 </div>
                 <!--/.Card-->
@@ -109,34 +68,8 @@
         <!--Grid row-->
 
     </div>
-    <script>
-        var paymentForm = document.getElementById('paymentForm');
-        paymentForm.addEventListener("submit", payWithPaystack, false);
 
-        function payWithPaystack() {
-            var handler = PaystackPop.setup({
-                key: 'pk_test_xxxxxxxxxxxxx', // Replace with your public key
-                email: document.getElementById("email-address").value,
-                amount: document.getElementById("amount").value * 100,
-                firstname: document.getElementById("first-name").value,
-                lastname: document.getElementById("first-name").value,
-                ref: '' + Math.floor((Math.random() * 1000000000) +
-                    1
-                    ), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-                // label: "Optional string that replaces customer email"
-                onClose: function () {
-                    alert('Window closed.');
-                },
-                callback: function (response) {
-                    var message = 'Payment complete! Reference: ' + response.reference;
-                    alert(message);
-                }
-            });
-
-            handler.openIframe();
-        }
-    </script>
 </main>
-{% block js %} <script src="{% static 'js/paystack.js' %}"></script>{% endblock %}
+<!-- {% block js %} <script src="{% static 'js/paystack.js' %}"></script>{% endblock %} -->
 
 <!--Main layout-->{% endblock%}

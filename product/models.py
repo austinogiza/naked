@@ -80,7 +80,7 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False)
     billing_address = models.ForeignKey('BillingAddress', on_delete=models.SET_NULL, blank=False, null=True)
     payment = models.ForeignKey('Payment', on_delete=models.SET_NULL, blank=False, null=True)
-    coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL, blank=False, null=True)
+ 
 
     def __str__(self):
         return self.user.username
@@ -89,7 +89,7 @@ class Order(models.Model):
         total = 0
         for order_item in self.items.all():
             total += order_item.get_final_price()
-        total -= self.coupon.amount
+        
         return total
 
 
@@ -99,6 +99,7 @@ class BillingAddress(models.Model):
                              on_delete=models.CASCADE)
     name =  models.CharField(max_length=50,blank=True)
     street_address =  models.CharField(max_length=200)
+    phone =  models.CharField(max_length=50)
     zip = models.CharField(max_length=100)
     country = models.CharField(max_length=200,blank=True)
     state =  models.CharField(max_length=200, blank=True)
@@ -107,12 +108,7 @@ class BillingAddress(models.Model):
         return self.user.username
 
 
-class Coupon(models.Model):
-    code = models.CharField(max_length=15)
-    amount = models.FloatField()
 
-    def __str__(self):
-        return self.code
 
 class Payment(models.Model):
     charge_id = models.CharField(max_length=100)

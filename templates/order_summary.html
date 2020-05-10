@@ -1,6 +1,6 @@
 {% extends 'prodbase.html' %} {% block content %}
 <div class="container">
-    <div class="table-responsive text-nowrap">
+    <div class="table-responsive text-nowrap table-hover">
         <h2>Order Summary</h2>
         <table class="table">
             <thead>
@@ -31,26 +31,20 @@
                 </tr>
                 <tr>
                     {% empty %}
-                    <td colspan="5">Your Cart is empty</td>
+                    <td colspan="12">Your Cart is empty</td>
 
                 </tr>
                 <tr>
 
-                    <td colspan="5">
-                        <a href="{% url 'product:shop'%}" class="btn btn-green float-right ml-2">Continue
+                    <td colspan="12">
+                        <a href="{% url 'product:shop'%}" class="btn btn-green float-left ml-2">Continue
                             Shopping</a>
 
                     </td>
                 </tr>
 
                 {% endfor %}
-                {% if object.get_total %}
-                <tr>
-                    <td colspan="4"><b>Coupon</b></td>
-                    <td><b> - &#8358; {{object.coupon.amount}}</b></td>
-                </tr>
 
-                {% endif %}
                 {% if object.get_total %}
                 <tr>
                     <td colspan="4"><b>Order Total</b></td>
@@ -58,9 +52,9 @@
                 </tr>
                 <tr>
 
-                    <td colspan="5">
-                        <a href="{% url 'product:shop'%}" class="btn btn-green float-right ml-2">Continue Shopping</a>
-                        <a href="{% url 'product:checkout' %}" class="btn btn-orange float-right">Proceed To
+                    <td colspan="6">
+                        <a href="{% url 'product:shop'%}" class="btn btn-green float-left mr-2">Continue Shopping</a>
+                        <a href="{% url 'product:checkout' %}" class="btn btn-orange float-left">Proceed To
                             Checkout</a>
                     </td>
                 </tr>

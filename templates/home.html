@@ -1,6 +1,8 @@
 {% extends 'prodbase.html' %}
+{% load static %}
 {% block style %}
-<title>Welcome To Naked Solar Limited </title>
+<title>Naked Solar Limited | Home Page </title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -8,10 +10,228 @@
 
     <section class="hero-header">
 
-        <div class="contin">
-            <h1></h1>
-            <p></p>
+        <div class="contin container">
+            <div class="box-1">
+                <h1>Your road </h1>
+                <p>to going Naked</p>
+                <a href="{% url 'details:about'%}" class="btn btn-green">See Naked</a>
+            </div>
+            <div class="box-2"><img src="{% static 'img/home.png'%}" alt="Naked Solar Limited Image"></div>
         </div>
+    </section>
+
+
+    <section class="journey mb-4">
+        <div class="title container">
+            <h1 class="text-center">At NAKED, we guide you <br> through the process.</h1>
+        </div>
+        <div class="box-contain container">
+            <div class="box-3">
+                <h1 class="wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="3s">We know how difficult it is</h1>
+                <p class="wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="3s">We know how difficult it must be
+                    to
+                    have made the
+                    decision to go solar, and then getting faced with
+                    the challenge of
+                    getting the right solar system could be another hurdle to cross, but that’s why are here, to tell
+                    you the NAKED truth
+                    about going solar and making the right choices.</p>
+            </div>
+            <div class="box-3"><img src="{% static 'img/journey.jpg' %}" alt=""></div>
+        </div>
+    </section>
+
+    <section class="steps mb-4">
+
+        <div class="container contain">
+            <div class="title mb-4 mt-4">
+                <h1 class="text-center wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="3s">Steps To Go
+                    Naked</h1>
+            </div>
+
+            <div class="steps-box">
+                <div class="box-4">
+                    <div class="stepper wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="3s">
+                        <div class="icons"><img src="{% static 'img/tri.svg'%}" alt=""></div>
+                        <div class="text">
+                            <h1>The site visit
+                            </h1>
+                            <p>The choice of the most suitable solar system to go for is one of the trickiest part of
+                                going Naked, it is an integral
+                                part.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stepper wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="3s">
+                        <div class="icons"><img src="{% static 'img/poly.svg'%}" alt=""></div>
+                        <div class="text">
+                            <h1>The Installation
+                            </h1>
+                            <p>We arrive at the site location with materials and a team of smiling installers and
+                                electricians.
+
+                                Home installations usually take a day.
+
+
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stepper wow fadeInLeft" data-wow-delay="1s" data-wow-duration="3s">
+                        <div class="icons"><img src="{% static 'img/star.svg'%}" alt=""></div>
+                        <div class="text">
+                            <h1>Paper Work
+                            </h1>
+                            <p>We will send you your certificate of completion and final receipt, if you ever need help
+                                with the filling of the forms,
+                                we are only a phone call away.
+
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="box-4 box-img"><img src="{% static 'img/journey.jpg' %}" alt=""></div>
+            </div>
+            <div class="steps-btn text-center mt-4 mb-4"><a href="{% url 'details:about' %}" class="btn btn-green">Learn
+                    More</a>
+            </div>
+        </div>
+
+
+    </section>
+    <section class="journey">
+        <div class="title container">
+            <h1 class="text-center wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s">At NAKED, we stay with you
+                <br> even
+                after your
+                decision.</h1>
+        </div>
+        <div class="box-contain container">
+            <div class="box-3">
+                <h1 class="wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="3s">We know how difficult it is</h1>
+                <p class="wow fadeInLeft" data-wow-delay="0.5s" data-wow-duration="3s">We know how difficult it must be
+                    to have
+                    made the decision to go solar, and then getting faced with
+                    the challenge of
+                    getting the right solar system could be another hurdle to cross, but that’s why are here, to tell
+                    you the NAKED truth
+                    about going solar and making the right choices.</p>
+            </div>
+            <div class="box-3"><img src="{% static 'img/journey.jpg' %}" alt=""></div>
+        </div>
+    </section>
+
+
+    <section class="faq-contain mt-4 mb-4">
+        <div class="title text-center mt-4 mb-4">
+            <h1 class="wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="3s">Installation</h1>
+            <p class="wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="3s">Here are the things you need to know.
+            </p>
+        </div>
+        <div class="contain">
+
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>What are you saving financially?</h1>
+                <p>We use independent solar software to get this done, depending on your location and the availability
+                    of this feature in
+                    your location.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>Do I need to get planning permission?
+                </h1>
+                <p>Planning permission is usually needed if the installation is ground mounted, in a conservation area,
+                    government laid our
+                    roots or a government listed building.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>Hidden costs?</h1>
+                <p>When we send a quote to you, be rest assured that there would not be any hidden costs, for supplies
+                    and installation of
+                    panels, inverter, certificate of completion, or any other related charges, so everything you need to
+                    get up and running
+                    is included.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>Quote Validity.</h1>
+                <p>Our quotes are valid for a duration fo 30 days, from the date it was sent to you. If the quote
+                    exceeds this duration
+                    without any activity, we are happy to prepare a new quote for you and always ready to serve your
+                    needs.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>Where do the cables & inverter go?
+                </h1>
+                <p>Cables will need to be fed from the PV Panels to the inverter and from the inverter to your consumer
+                    unit (fuse board)
+                    and batteries will also need to be connected to your consumer unit.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>How do I know how much of my Solar PV electric I’m using?</h1>
+                <p>There are a variety of monitors, indicators available. Please speak to the site surveyor or call the
+                    office and we’ll be
+                    able to advise on the latest devices available.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>I’m ready to go Naked!</h1>
+                <p>All you need at this point will be for you to give us a call, we usually set up a free site
+                    visitation, or to book your
+                    installation slot, we would then ask for 80% to be paid not less than 48 hours before the date of
+                    installation to enable
+                    us get all your parts for installation ready, after installation is complete, you then make the
+                    final 20% payment.
+                </p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>How long does installation take?</h1>
+                <p>Most domestic installations can be completed in one day. We’ll let you know if we expect yours to
+                    take longer. Our
+                    weekly domestic schedule has installations on Monday – Thursday and we always keep Friday free to
+                    catch up with anything
+                    that was left over from the week.</p>
+            </div>
+            <div class="box-5 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="3s"><img
+                    src="{% static 'img/tri.svg' %}" alt="">
+                <h1>After service follow up</h1>
+                <p>Well after all of this, we would send you a mail or schedule a call after one month to make sure you
+                    are happy and
+                    enjoying your system, we will also contact you from time to time, usually yearly to check and remind
+                    you of any
+                    maintenance if applicable to you type of system.</p>
+            </div>
+        </div>
+        <div class="faq-btn text-center"><a href="{% url 'details:faq' %}" class="btn btn-green"> Learn More</a></div>
+    </section>
+    <section class="shop mt-4 mb-4">
+        <div class="title text-center mt-4 mb-4">
+            <h1>Shop Online</h1>
+        </div>
+        <div class="shop-box  mt-4 mb-4">
+            <div class="box-6">
+                <h1 class="wow fadeInLeft" data-wow-delay="0.5s" data-wow-duration="3s">Pricing</h1>
+                <p class="wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="3s">Want to order some of our
+                    products?</p>
+            </div>
+            <div class="box-7"><img src="{% static 'img/shop.jpg'%}" alt=""></div>
+        </div>
+        <div class="shop-btn text-center"> <a href="{% url 'product:shop'%}" class="btn btn-green">Shop Online</a></div>
+    </section>
+
+
+    <section class="go text-center mt-4 mb-4">
+        <h1 class="mt-4 mb-4">Take our word for it.</h1>
+        <a href="{% url 'product:contact' %}" class="btn btn-green">Go Naked</a>
     </section>
 </main>
 {% endblock %}

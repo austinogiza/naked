@@ -1,10 +1,82 @@
-<form action='product:customer_info' method='post'>
+{% extends 'prodbase.html' %} {% load paystack %}{% load static %} {% block style %}
 
-    {% csrf_token %}
+<!-- {% load static %}
 
-    <div class='container'>
-        {{ customer_info_form.as_p }}
+{% load paystack %}
+ -->
+
+<!-- 
+<script src="http://js.paystack.co/v1/inline.js"></script> -->
+
+
+{% endblock %} {% block content %}
+<main>
+
+    <div class="container wow fadeIn">
+
+        <!-- Heading -->
+        <h2 class="mt-5 h2 text-center">Payment</h2>
+
+        <!--Grid row-->
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-12 mb-8">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    {% paystack_button amount=amount email=email %}
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-12 mb-4 mt-5">
+
+                <!-- Heading -->
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">{{ order.items.count}}</span>
+                </h4>
+
+                <!-- Cart -->
+
+
+
+                <ul class="list-group mb-3 z-depth-1">
+                    {% for order_item in order.items.all %}
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">{{ order_item.quantity }} {{ order_item.item.title }}</h6>
+                            <small class="text-muted"></small>
+                        </div>
+                        <span class="text-muted">&#8358; {{ order_item.get_final_price }}</span>
+                    </li>
+                    {% endfor %}
+
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (NAIRA)</span>
+                        <strong> &#8358; {{ order.get_total }}</strong>
+                    </li>
+                </ul>
+                <!-- Cart -->
+
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
     </div>
 
-    <input type='Submit' value='Make Payment'>
-</form>
+</main>
+<!-- {% block js %} <script src="{% static 'js/paystack.js' %}"></script>
+{% endblock %} -->
+
+<!--Main layout-->{% endblock%}

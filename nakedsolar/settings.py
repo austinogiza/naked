@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'sorl.thumbnail',
     "paystack",
-    'django_paystack',
+    #'django_paystack',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -41,8 +41,11 @@ INSTALLED_APPS = [
 ]
 
 
-PAYSTACK_PUBLIC_KEY = "pk_live_b0800897c3018ddaf56b0268f1009c2b5a8fc8df" ##paystack public key
-PAYSTACK_SCRET_KEY = "sk_live_9bfbaf70aad90882fa3093d4e6d386a1ae040fa6"  ##paystack secret key
+#PAYSTACK_PUBLIC_KEY = "pk_live_b0800897c3018ddaf56b0268f1009c2b5a8fc8df" ##paystack public key
+#PAYSTACK_SECRET_KEY = "sk_live_9bfbaf70aad90882fa3093d4e6d386a1ae040fa6"  ##paystack secret key
+
+PAYSTACK_PUBLIC_KEY = "pk_test_320e41039b2db6919cd963e88e48cab0246961d3"
+PAYSTACK_SECRET_KEY = "sk_test_90aef3bdfcf15a17b9303a47767ce1ecde33b10b"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -158,7 +161,8 @@ LOGIN_REDIRECT_URL ='/'
 ACCOUNT_LOGOUT_ON_GET =True
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
-
+PAYSTACK_SUCCESS_URL = '/'
+PAYSTACK_FAILED_URL = 'shop/'
 ### Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

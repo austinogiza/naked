@@ -1,6 +1,47 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins:700&display=swap');
 
-.nkdnavbar {
-    height: 90px;
-    width: 100%;
+:root {
+    --green: #388e3c;
+    --lightgreen: rgba(1, 96, 12, 0.1);
+    --lighter: rgba(59, 199, 75, 0.078);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.btnTop {
+    background: var(--green);
+    color: #ffffff;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    display: none;
+    cursor: pointer;
+    font-size: 26px;
+    border-radius: 3px;
+    text-align: center;
+    margin: auto;
+    transition: 0.3s all ease;
+
+}
+
+.btnTop:hover {
+    transform: scale(1.1);
 }

@@ -35,6 +35,10 @@
                             {{ form.street_address }}
                             <label for="address" class="">Address</label>
                         </div>
+                        <div class="md-form mb-5">
+                            {{ form.phone }}
+                            <label for="address" class="">Phone</label>
+                        </div>
 
                         <!--Grid row-->
                         <div class="row">
@@ -52,13 +56,18 @@
                             <div class="col-lg-4 col-md-6 mb-4">
 
                                 <label for="state">State</label>
-                                <select class="custom-select d-block w-100" id="state" required>
-                                    <option value="">Choose...</option>
-                                    <option>California</option>
-                                </select>
-                                <div class="invalid-feedback">
+                                <!--   <select class="custom-select d-block w-100" id="state" required>
+                                   
+                                    <option>
+                                        Choose...</option> {% for key,state in form.fields.state %}
+                                    <option value="{{ key }}">{{state}}</option> {% endfor %}
+                                </select> -->
+
+                                <!-- {{form.state}} -->
+                                <div class=" invalid-feedback">
                                     Please provide a valid state.
                                 </div>
+
 
                             </div>
                             <!--Grid column-->
@@ -139,13 +148,6 @@
                     </li>
                     {% endfor %}
 
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                            <small>{{ order.coupon.code }}</small>
-                        </div>
-                        <span class="text-success">- &#8358; {{ order.coupon.amount }}</span>
-                    </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (NAIRA)</span>
                         <strong>&#8358; {{ order.get_total }}</strong>
@@ -153,17 +155,6 @@
                 </ul>
                 <!-- Cart -->
 
-                <!-- Promo code -->
-                <form class="card p-2" action="{% url 'product:add-coupon' %}" method="POST">
-                    {%  csrf_token %}
-                    <div class="input-group">
-                        {{ couponform.code }}
-                        <div class="input-group-append">
-                            <button class="btn btn-green btn-md waves-effect m-0" type="submit">Redeem</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- Promo code -->
 
             </div>
             <!--Grid column-->

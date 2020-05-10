@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Item, Order, OrderItem, BillingAddress, Coupon, Payment, ContactMessage
+from .models import Item, Order, OrderItem, BillingAddress, Payment, ContactMessage
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm,CouponForm, ContactForm,CustomerInfoForm
+from .forms import CheckoutForm, ContactForm,CustomerInfoForm
 from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
@@ -35,11 +35,10 @@ class CheckoutView(View):
     def get(self,  *args, **kwargs):
         #form
         order = Order.objects.get(user=self.request.user, ordered=False)
-        
         form = CheckoutForm
         context = {
             'form' :form,
-            'couponform': CouponForm(),
+          
             'order' : order
         }
         return render(self.request, 'checkout-page.html',context)
@@ -50,7 +49,8 @@ class CheckoutView(View):
             if form.is_valid():
                 name = form.cleaned_data.get('name')
                 street_address = form.cleaned_data.get('street_address')
-                country = form.cleaned_data.get('country')
+                phone = form.cleaned_data.get('phone')
+                # country = form.cleaned_data.get('country')
                 zip = form.cleaned_data.get('zip')
                 payment_option = form.cleaned_data.get('payment_option')  
                 # save_info = form.cleaned_data.get('save_info')
@@ -59,50 +59,62 @@ class CheckoutView(View):
                     user = self.request.user,
                     name = name,
                     street_address = street_address,
+                    phone = phone,
                     zip=zip,
-                    country=country
+                    # country=country
                 )
                 billing_address.save()
                 order.billing_address = billing_address
                 order.save()
-                
                 if payment_option == 'P':
                     return redirect('product:paystack')
-                elif payment_option == 'PY':
-                    return redirect('product:payment', payment_option='payu')
+                # elif payment_option == 'PY':
+                    #     return redirect('product:payment', payment_option='payu')
                 else:
                     messages.warning(self.request, "Failed Checkout")
                     return redirect('product:checkout')
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
-            return redirect("product:order")
+            return redirect("product:shop")
 
 
 class PaystackView(View):
+  
     def get(self, *args, **kwargs):
+        customer_form = CustomerInfoForm()
         order = Order.objects.get(user=self.request.user, ordered=False)
-        # if order.billing_address:
-        context = {
-            'order' : order 
-        }
-        return render(self.request, 'paystack.html', context)
-        # else:
-        #     messages.warning(self.request, "You have not added billing address")
-        #     return redirect("product:checkout")
+        amount = order.get_total() 
+        email = self.request.user.email
+        
+        if order.billing_address:
+            context ={
+            'order': order,
+            'customer_form': customer_form,
+            'amount':amount,
+            'email':email
+            }
+         ## create payment 
+            payment = Payment()
+            payment.user = self.request.user
+            payment.amount = amount
+            payment.save()
     
-    def post(self,*args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        amount = order.get_total()
+            # ##assign payment to the order
 
-        order.ordered = True
-     
+            order.ordered = True
+            order.payment = payment
+            order.save()
+            return render(self.request, 'paystack.html', context)
+        else:
+                messages.warning(self.request, "You have not added billing address")
+                return redirect("product:checkout")
+    
 
        
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self,  *args, **kwargs):
-
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             context = {
@@ -111,7 +123,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
             return render(self.request, 'order_summary.html', context)
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
-            return redirect("/")
+            return redirect("product:shop")
 
 
 @login_required
@@ -329,50 +341,30 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
-def get_coupon(request, code):
-    try:
-        coupon = Coupon.objects.get(code=code)
-        return coupon
-    except ObjectDoesNotExist:
-        messages.info(request, "This coupon doesn't exist")
-        return redirect('product:checkout')
-
-        
-
-class AddCouponView(View):
-    def post(self, *args, **kwargs):
-        form = CouponForm(self.request.POST or None)
-        if form.is_valid():
-            try:
-                code = form.cleaned_data.get('code')
-                order = Order.objects.get(user=self.request.user, ordered=False)
-                order.coupon = get_coupon(self.request, code)
-                order.save()
-                messages.success(self.request, "You have successfully added coupon")
-                return redirect('product:checkout')
-            except ObjectDoesNotExist:
-                messages.info(self.request, "You do not have an active order")
-                return redirect('product:checkout')
-
-
-        
-
-
 def customer_info(request):
-    customer_form = CustomerInfoForm(request.POST)
-    if request.method == 'POST':
-        
-        if customer_form.is_valid() and customer_form.cleaned_data:
-            customer_form.save()
-            email = {
-            'email' : customer_form.email 
-            }
-            return render(request,"payment.html", email)
-        else:
-            return HttpResponse('Invalid input try again!!!')
-    else:
-        customer_form = CustomerInfoForm()
-        customer_form = {
-            'customer_form': customer_form
-            }
-    return render(request, 'customer_info.html',customer_form )
+    customer_form = CustomerInfoForm()
+    order = Order.objects.get(user=request.user, ordered=False)
+    amount = order.get_total() 
+    email = request.user.email
+    
+    form = {
+            'order':order,
+            'customer_form': customer_form,
+           'amount':amount,
+            'email':email
+        }
+   
+    # ## create payment 
+    # payment = Payment()
+    # payment.charge_id = 
+    # payment.user = request.user
+    # payment.amount = amount
+    # payment.save()
+    
+    # ##assign payment to the order
+
+    # order.ordered = True
+    # order.payment = payment
+    # order.save()
+    return render(request, 'customer_info.html', 
+                    form)

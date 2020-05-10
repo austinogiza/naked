@@ -12,7 +12,7 @@ from .views import (HomeView,
   remove_order_from_cart,
   CheckoutView,
 PaystackView,
-AddCouponView,
+
  add_home_to_cart
                     )
 
@@ -26,7 +26,7 @@ urlpatterns = [
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('add-to-cart/<slug>/', add_to_cart, name='add-to-cart'),
       path('add-home-to-cart/<slug>/',  add_home_to_cart, name='add-home-to-cart'),
-    path('add-coupon/', AddCouponView.as_view(), name='add-coupon'),
+
     path('remove-from-cart/<slug>/', remove_from_cart, name='remove-from-cart'),
     path('remove-item-from-cart/<slug>/',
          remove_Single_from_cart, name='remove-single-item-from-cart'),
@@ -38,6 +38,8 @@ urlpatterns = [
          name='customer_info'),
       path('paystack/',
           PaystackView.as_view(), name='paystack'),
+         # path('customer_info', views.customer_info,
+        # name='customer_info')
 
   
 

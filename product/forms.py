@@ -8,7 +8,7 @@ from .models import CustomerInfo
 
 PAYMENT_CHOICE = (
     ('P', 'Paystack'),
-     ('PY', 'Payu')
+     
 )
 
 COUNTRY_CHOICE =(
@@ -16,7 +16,44 @@ COUNTRY_CHOICE =(
 )
 
 STATE_CHOICES =(
-    ('')
+    ('FC, FCT'),
+    ('AB, Abia'),
+    ('AADB, Adamawa'),
+    ('AK, Akwa Ibom'),
+    ('AN, Anambra'),
+    ('BA, Bauchi'),
+    ('BY, Bayelsa'),
+    ('BN, Benue'),
+    ('BO, Borno'),
+    ('CR, Cross River'),
+    ('DT, Delta'),
+    ('EB, Ebonyi'),
+    ('ED, Edo'),
+    ('EK, Ekiti'),
+    ('EN, Enugu'),
+    ('GB, Gombe'),
+    ('IM, Imo'),
+    ('JG, Jigawa'),
+    ('KD, Kaduna'),
+    ('KN, Kano'),
+    ('KT, Katsina'),
+    ('KB, Kebbi'),
+    ('KG, Kogi'),
+    ('KW, Kwara'),
+    ('LG, Lagos'),
+    ('EK, Nasarawa'),
+    ('EN, Niger'),
+    ('OG, Ogun'),
+    ('ON, Ondo'),
+    ('OS, Osun'),
+    ('OY, Oyo'),
+    ('PT, Plateau'),
+    ('SK, Sokoto'),
+    ('TA, Taraba'),
+    ('YB, Yobe'),
+    ('ZF, Zamfara'),
+   
+      
 
 
 )
@@ -33,15 +70,18 @@ class CheckoutForm(forms.Form):
         'placeholder': 'Enter Your Address',
         'class' : 'form-control'
     }))
-    country = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Select Country',
+    phone = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Enter Your Phone Number',
         'class' : 'form-control'
     }))
-    state = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Select State',
-        'class' : 'form-control'
-    }))
-    
+    # country = forms.CharField(widget=forms.Select(attrs={
+    #     'placeholder': 'Select Country',
+    #     'class' : 'custom-select d-block w-100'
+    # }))
+    # state = forms.CharField(widget=forms.SelectMultiple(attrs={
+    #     'placeholder': 'Select State',
+    #     'class' : 'form-control'
+    # }))
     zip = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control'
     }))
@@ -50,14 +90,6 @@ class CheckoutForm(forms.Form):
         widget=forms.RadioSelect, choices=PAYMENT_CHOICE, required=True)
 
 
-class CouponForm(forms.Form):
-    code = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Promo code',
-        'aria-label': "Recipient's username",
-        'aria-describedby': 'basic-addon2'
-
-    }))
 
 class ContactForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={

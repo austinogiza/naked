@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{%static 'font/flaticon.eot' %}">
 
 
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
 
 
     <style type="text/css">
@@ -61,7 +62,6 @@
             }
         }
     </style>
-    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
 </head>
 
 
@@ -258,10 +258,19 @@
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     <script type="text/javascript">
         // Animations initialization
-        // new WOW().init();
+        let wow = new WOW({
+            offset: 0,
+        });
+        wow.init();
     </script>
 
+    <div id="btnTop" class="btnTop">
+        <i class="fa fa-arrow-up"></i>
 
+    </div>
+    <script src="{% static 'js/aos.js' %}"></script>
+
+    <script src="{% static 'js/top.js'%}"></script>
 
     {% block js %} {% endblock %}
 </body>
