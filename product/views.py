@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm, ContactForm,CustomerInfoForm
 from django.http import HttpResponse, JsonResponse
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.template.loader import get_template, render_to_string
 # Create your views here.
@@ -67,7 +67,7 @@ class CheckoutView(View):
                 order.billing_address = billing_address
                 order.save()
                 if payment_option == 'P':
-                    return redirect('product:paystack')
+                    return redirect('product:pay-paystack')
                 # elif payment_option == 'PY':
                     #     return redirect('product:payment', payment_option='payu')
                 else:
@@ -83,31 +83,50 @@ class PaystackView(View):
     def get(self, *args, **kwargs):
         customer_form = CustomerInfoForm()
         order = Order.objects.get(user=self.request.user, ordered=False)
-        amount = order.get_total() 
+        # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
+        name = order.billing_address.name
+        amount = order.get_total()
+        user = self.request.user
         email = self.request.user.email
-        
         if order.billing_address:
             context ={
             'order': order,
             'customer_form': customer_form,
             'amount':amount,
-            'email':email
+            'email':email,
+            'name': name,
+          
+           
             }
+            #if 
          ## create payment 
-            payment = Payment()
-            payment.user = self.request.user
-            payment.amount = amount
-            payment.save()
-    
-            # ##assign payment to the order
 
-            order.ordered = True
-            order.payment = payment
-            order.save()
+            payment = Payment()
+            # payment.user = self.request.user
+            # payment.amount = amount
+            # # payment.timestap 
+            # payment.save()
+            # template = render_to_string('email_template.html', context)
+    
+            # # ##assign payment to the order
+
+            # order.ordered = True
+            # order.payment = payment
+            # order.save()
+            # email = EmailMessage(
+            #     'Thank You For Choosing Us',
+            #     template,
+            #     settings.EMAIL_HOST_USER,
+            #     [email]
+
+                
+
+            # )
+            # email.send()
             return render(self.request, 'paystack.html', context)
         else:
-                messages.warning(self.request, "You have not added billing address")
-                return redirect("product:checkout")
+            messages.warning(self.request, "You have not added billing address")
+            return redirect("product:checkout")
     
 
        
@@ -341,30 +360,55 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
-def customer_info(request):
-    customer_form = CustomerInfoForm()
-    order = Order.objects.get(user=request.user, ordered=False)
-    amount = order.get_total() 
-    email = request.user.email
+# def customer_info(request):
+#     customer_form = CustomerInfoForm()
+#     order = Order.objects.get(user=request.user, ordered=False)
+#     amount = order.get_total() 
+#     email = request.user.email
     
-    form = {
-            'order':order,
-            'customer_form': customer_form,
-           'amount':amount,
-            'email':email
-        }
+#     form = {
+#             'order':order,
+#             'customer_form': customer_form,
+#            'amount':amount,
+#             'email':email
+#         }
    
-    # ## create payment 
-    # payment = Payment()
-    # payment.charge_id = 
-    # payment.user = request.user
-    # payment.amount = amount
-    # payment.save()
+#     # ## create payment 
+#     # payment = Payment()
+#     # payment.charge_id = 
+#     # payment.user = request.user
+#     # payment.amount = amount
+#     # payment.save()
     
-    # ##assign payment to the order
+#     # ##assign payment to the order
 
-    # order.ordered = True
-    # order.payment = payment
-    # order.save()
-    return render(request, 'customer_info.html', 
-                    form)
+#     # order.ordered = True
+#     # order.payment = payment
+#     # order.save()
+#     return render(request, 'customer_info.html', 
+#                     form)
+
+def customer_info(request):
+    if request.method == 'POST':
+        customer_form = CustomerInfoForm(request.method)
+        if customer_form.is_valid()and customer_form.cleaned_data:
+            customer_form.save()
+            email ={
+                'email':customer_form.email
+            }
+            return render(request, 'payment.html', email
+                          )
+        else:
+            return HttpResponse('Invalid input try again!!!')
+    else:
+        customer_form = CustomerInfoForm()
+        order = Order.objects.get(user=request.user, ordered=False)
+        amount = order.get_total() 
+        email = request.user.email
+       
+        form ={
+            'customer_form': customer_form,
+            'amount':amount,
+            'email': email
+        }
+        return render(request, 'customer_info.html', form)

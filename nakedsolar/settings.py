@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'sorl.thumbnail',
     "paystack",
-    #'django_paystack',
+    'django_paystack',
     'django.contrib.sites',
     'allauth',
     'allauth.account',

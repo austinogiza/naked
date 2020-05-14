@@ -36,8 +36,8 @@ urlpatterns = [
          remove_order_from_cart, name='remove-order-from-cart'),
      path('customer_info/', views.customer_info,
          name='customer_info'),
-      path('paystack/',
-          PaystackView.as_view(), name='paystack'),
+      path('pay-paystack/',
+          PaystackView.as_view(), name='pay-paystack'),
          # path('customer_info', views.customer_info,
         # name='customer_info')
 

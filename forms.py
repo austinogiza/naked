@@ -16,46 +16,8 @@ COUNTRY_CHOICE =(
 )
 
 STATE_CHOICES =(
-       ('FC', 'FCT'),
+    ('FC', 'FCT'),
     ('AB', 'Abia'),
-    ('AD','Adamawa'),
-    ('AK', 'Akwa Ibom'),
-    ('AN', 'Anambra'),
-    ('BA', 'Bauchi'),
-    ('BY', 'Bayelsa'),
-    ('BN', 'Benue'),
-    ('BO', 'Borno'),
-    ('CR', 'Cross River'),
-    ('DT', 'Delta'),
-    ('EB', 'Ebonyi'),
-    ('ED', 'Edo'),
-    ('EK', 'Ekiti'),
-    ('EN', 'Enugu'),
-    ('GB', 'Gombe'),
-    ('IM', 'Imo'),
-    ('JG', 'Jigawa'),
-    ('KD', 'Kaduna'),
-    ('KN', 'Kano'),
-    ('KT', 'Katsina'),
-    ('KB', 'Kebbi'),
-    ('KG', 'Kogi'),
-    ('KW', 'Kwara'),
-    ('LG', 'Lagos'),
-    ('EK', 'Nasarawa'),
-    ('EN', 'Niger'),
-    ('OG', 'Ogun'),
-    ('ON', 'Ondo'),
-    ('OS', 'Osun'),
-    ('OY', 'Oyo'),
-    ('PT', 'Plateau'),
-    ('SK', 'Sokoto'),
-    ('TA', 'Taraba'),
-    ('YB', 'Yobe'),
-    ('ZF', 'Zamfara'),
-   
-      
-
-
 )
 class CheckoutForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={
@@ -70,8 +32,8 @@ class CheckoutForm(forms.Form):
         'placeholder': 'Enter Your Phone Number',
         'class' : 'form-control'
     }))
-    country = forms.ChoiceField(widget=forms.Select, choices=COUNTRY_CHOICE)
-    state = forms.ChoiceField(widget=forms.Select, choices=STATE_CHOICES)
+    country = forms.ChoiceField(widget=forms.Select, choices= COUNTRY_CHOICE)
+    state = forms.ChoiceField(widget=forms.Select, choices = STATE_CHOICES)
     zip = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control'
     }))

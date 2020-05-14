@@ -10,53 +10,57 @@ PAYMENT_CHOICE = (
     ('P', 'Paystack'),
      
 )
+
 COUNTRY_CHOICE =(
-    ('cn','Select Country'),    
-    ('N', "Nigeria"),
+    ('N', "Nigeria")
 )
 
 STATE_CHOICES =(
-       ('FC', 'FCT'),
-    ('AB', 'Abia'),
-    ('AD','Adamawa'),
-    ('AK', 'Akwa Ibom'),
-    ('AN', 'Anambra'),
-    ('BA', 'Bauchi'),
-    ('BY', 'Bayelsa'),
-    ('BN', 'Benue'),
-    ('BO', 'Borno'),
-    ('CR', 'Cross River'),
-    ('DT', 'Delta'),
-    ('EB', 'Ebonyi'),
-    ('ED', 'Edo'),
-    ('EK', 'Ekiti'),
-    ('EN', 'Enugu'),
-    ('GB', 'Gombe'),
-    ('IM', 'Imo'),
-    ('JG', 'Jigawa'),
-    ('KD', 'Kaduna'),
-    ('KN', 'Kano'),
-    ('KT', 'Katsina'),
-    ('KB', 'Kebbi'),
-    ('KG', 'Kogi'),
-    ('KW', 'Kwara'),
-    ('LG', 'Lagos'),
-    ('EK', 'Nasarawa'),
-    ('EN', 'Niger'),
-    ('OG', 'Ogun'),
-    ('ON', 'Ondo'),
-    ('OS', 'Osun'),
-    ('OY', 'Oyo'),
-    ('PT', 'Plateau'),
-    ('SK', 'Sokoto'),
-    ('TA', 'Taraba'),
-    ('YB', 'Yobe'),
-    ('ZF', 'Zamfara'),
+    ('FC, FCT'),
+    ('AB, Abia'),
+    ('AADB, Adamawa'),
+    ('AK, Akwa Ibom'),
+    ('AN, Anambra'),
+    ('BA, Bauchi'),
+    ('BY, Bayelsa'),
+    ('BN, Benue'),
+    ('BO, Borno'),
+    ('CR, Cross River'),
+    ('DT, Delta'),
+    ('EB, Ebonyi'),
+    ('ED, Edo'),
+    ('EK, Ekiti'),
+    ('EN, Enugu'),
+    ('GB, Gombe'),
+    ('IM, Imo'),
+    ('JG, Jigawa'),
+    ('KD, Kaduna'),
+    ('KN, Kano'),
+    ('KT, Katsina'),
+    ('KB, Kebbi'),
+    ('KG, Kogi'),
+    ('KW, Kwara'),
+    ('LG, Lagos'),
+    ('EK, Nasarawa'),
+    ('EN, Niger'),
+    ('OG, Ogun'),
+    ('ON, Ondo'),
+    ('OS, Osun'),
+    ('OY, Oyo'),
+    ('PT, Plateau'),
+    ('SK, Sokoto'),
+    ('TA, Taraba'),
+    ('YB, Yobe'),
+    ('ZF, Zamfara'),
    
       
 
 
 )
+
+
+COUNTRIES_ONLY = ['NG']
+
 class CheckoutForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Enter Your Full Name',
@@ -70,8 +74,14 @@ class CheckoutForm(forms.Form):
         'placeholder': 'Enter Your Phone Number',
         'class' : 'form-control'
     }))
-    country = forms.ChoiceField(widget=forms.Select, choices=COUNTRY_CHOICE)
-    state = forms.ChoiceField(widget=forms.Select, choices=STATE_CHOICES)
+    # country = forms.CharField(widget=forms.Select(attrs={
+    #     'placeholder': 'Select Country',
+    #     'class' : 'custom-select d-block w-100'
+    # }))
+    # state = forms.CharField(widget=forms.SelectMultiple(attrs={
+    #     'placeholder': 'Select State',
+    #     'class' : 'form-control'
+    # }))
     zip = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control'
     }))
