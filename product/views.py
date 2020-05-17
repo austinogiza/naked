@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm, ContactForm,CustomerInfoForm
@@ -12,6 +13,9 @@ from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.template.loader import get_template, render_to_string
+from paystack.signals import payment_verified
+from django.dispatch import receiver
+import datetime
 # Create your views here.
 
 
@@ -50,15 +54,18 @@ class CheckoutView(View):
                 name = form.cleaned_data.get('name')
                 street_address = form.cleaned_data.get('street_address')
                 phone = form.cleaned_data.get('phone')
-                # country = form.cleaned_data.get('country')
+                country = form.cleaned_data.get('country')
+                state = form.cleaned_data.get('state')
                 zip = form.cleaned_data.get('zip')
-                payment_option = form.cleaned_data.get('payment_option')  
+                # payment_option = form.cleaned_data.get('payment_option')  
                 # save_info = form.cleaned_data.get('save_info')
                
                 billing_address = BillingAddress(
                     user = self.request.user,
                     name = name,
                     street_address = street_address,
+                    country =country,
+                    state =state,
                     phone = phone,
                     zip=zip,
                     # country=country
@@ -66,13 +73,13 @@ class CheckoutView(View):
                 billing_address.save()
                 order.billing_address = billing_address
                 order.save()
-                if payment_option == 'P':
-                    return redirect('product:pay-paystack')
+                # if payment_option == 'P':
+                return redirect('product:pay-paystack')
                 # elif payment_option == 'PY':
                     #     return redirect('product:payment', payment_option='payu')
-                else:
-                    messages.warning(self.request, "Failed Checkout")
-                    return redirect('product:checkout')
+                # else:
+                #     messages.warning(self.request, "Failed Checkout")
+                #     return redirect('product:checkout')
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
             return redirect("product:shop")
@@ -101,35 +108,64 @@ class PaystackView(View):
             #if 
          ## create payment 
 
-            payment = Payment()
-            # payment.user = self.request.user
-            # payment.amount = amount
-            # # payment.timestap 
-            # payment.save()
-            # template = render_to_string('email_template.html', context)
-    
-            # # ##assign payment to the order
-
-            # order.ordered = True
-            # order.payment = payment
-            # order.save()
-            # email = EmailMessage(
-            #     'Thank You For Choosing Us',
-            #     template,
-            #     settings.EMAIL_HOST_USER,
-            #     [email]
-
-                
-
-            # )
-            # email.send()
+            
             return render(self.request, 'paystack.html', context)
         else:
             messages.warning(self.request, "You have not added billing address")
             return redirect("product:checkout")
+
+
+@receiver(payment_verified)
+def on_payment_verified(sender, ref,amount, **kwargs):
+    """
+    ref: paystack reference sent back.
+    amount: amount in Naira.
+    """
+    pass
+    # User = None
+    # if request.user.is_authenicated():
+    #     User = request.user 
+
+    # order = Order.objects.get(user=user, ordered=False)
+    # payment = Payment()
+    # payment.reference = ref
+    # payment.amount = amount
+    # payment.user = User.is_authenticated()
+    # payment.timestap = timezone.now()
+    # payment.save()
+    # # ##assign payment to the order
+#    order.ordered = True
+#    order.payment = payment
+#    order.save()
+    #email = EmailMessage(
+          #     'Thank You For Choosing Us',
+          #     template,
+          #     settings.EMAIL_HOST_USER,
+          #     [email]
+           # )
+            # email.send()
     
 
-       
+# @receiver(payment_verified)
+# def on_payment_verified(sender, ref, amount, **kwargs):
+#     order = Order.objects.get(user=sender, ordered=False)
+#      ##create payment
+#     
+#     payment.user = sender
+#     payment.reference = ref
+#     payment.amount = amount
+#     payment.timestap = datetime.now()
+#     payment.save()
+#     template = render_to_string('email_template.html')
+    
+#     #       # # ##assign payment to the order
+#     order.ordered = True
+#     order.payment = payment
+#     order.save()
+#                
+
+
+    
 
 
 class OrderSummaryView(LoginRequiredMixin, View):

@@ -1,5 +1,7 @@
-{% extends 'prodbase.html' %} {%block content %}
-
+{% extends 'prodbase.html' %}
+{% load static %} {%block content %}
+<!-- JQuery -->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
 {% block style %}
 <title>{{object.title}} - Naked Solar Limited</title>
 {% endblock %}
@@ -51,7 +53,8 @@
 
                     <!-- Default input -->
 
-                    <a href="{{ object.get_add_to_cart_url }}" class="btn btn-green btn-md my-0 p mb-2">Add to cart
+                    <a href="{{ object.get_add_to_cart_url }}" class="btn btn-green btn-md my-0 p mb-2 add-to-cart">Add
+                        to cart
                         <i class="fas fa-shopping-cart ml-1"></i>
                     </a>
 
@@ -115,6 +118,7 @@
             </div>
         </div>
     </div>
+
 
 </main>
 <!--Main layout-->{% endblock %}

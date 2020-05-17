@@ -29,7 +29,7 @@ class Item(models.Model):
 
     category = models.CharField(choices=CATEGORY_CHOICE, max_length=2, blank=False)
     label = models.CharField(choices=LABEL_CHOICE, max_length=1, blank=False)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=False)
 
     def __str__(self):
         return self.title
@@ -111,8 +111,10 @@ class BillingAddress(models.Model):
 
 
 class Payment(models.Model):
-    charge_id = models.CharField(max_length=100)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL, blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    reference = models.CharField(max_length=100)
+    
     amount = models.FloatField()
     timestap = models.DateTimeField(auto_now_add=True)
 

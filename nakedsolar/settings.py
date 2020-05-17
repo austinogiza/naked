@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'sorl.thumbnail',
     "paystack",
-    'django_paystack',
+    # 'django_paystack',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -163,6 +163,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 PAYSTACK_SUCCESS_URL = '/'
 PAYSTACK_FAILED_URL = 'shop/'
+
 ### Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

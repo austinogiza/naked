@@ -89,7 +89,12 @@
     height: 500px;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
     border-radius: 3px;
-
+    animation-name: upDown;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate-reverse;
+    animation-timing-function: linear;
 }
 
 .journey .box-3 {
@@ -157,6 +162,16 @@
     height: 500px;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
     border-radius: 3px;
+
+}
+
+.box-img {
+    animation-name: upDown;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate-reverse;
+    animation-timing-function: linear;
 }
 
 .steps .stepper {
@@ -322,6 +337,16 @@ shop section */
         sans-serif;
     font-size: 36px;
     font-weight: 600;
+}
+
+@keyframes upDown {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(60px);
+    }
 }
 
 @media only screen and (max-width:800px) {
