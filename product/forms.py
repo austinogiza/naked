@@ -11,7 +11,7 @@ PAYMENT_CHOICE = (
      
 )
 COUNTRY_CHOICE =(
-    ('cn','Select Country'),    
+    ('CN','Select Country'),    
     ('N', "Nigeria"),
 )
 

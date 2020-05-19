@@ -92,9 +92,10 @@ class PaystackView(View):
         order = Order.objects.get(user=self.request.user, ordered=False)
         # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
         name = order.billing_address.name
-        amount = order.get_total()
+        amount = order.get_total() * 100
         user = self.request.user
         email = self.request.user.email
+        # order_item = order.item 
         if order.billing_address:
             context ={
             'order': order,
@@ -102,7 +103,10 @@ class PaystackView(View):
             'amount':amount,
             'email':email,
             'name': name,
-          
+            'user': user,
+           
+
+            
            
             }
             #if 
@@ -113,24 +117,34 @@ class PaystackView(View):
         else:
             messages.warning(self.request, "You have not added billing address")
             return redirect("product:checkout")
+    def post(self, *args, **kwargs):
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
+        name = order.billing_address.name
+        amount = order.get_total() * 100
+        user = self.request.user
+        email = self.request.user.email
+        # order_item = order.item 
+        print(amount)
+
+
+
 
 
 @receiver(payment_verified)
-def on_payment_verified(sender, ref,amount, **kwargs):
+def on_payment_verified(sender, ref, amount, **kwargs):
     """
     ref: paystack reference sent back.
     amount: amount in Naira.
     """
-    pass
     # User = None
     # if request.user.is_authenicated():
     #     User = request.user 
-
-    # order = Order.objects.get(user=user, ordered=False)
+    # order = Order.objects.get(user=request.user, ordered=False)
     # payment = Payment()
     # payment.reference = ref
     # payment.amount = amount
-    # payment.user = User.is_authenticated()
+    # payment.user = sender
     # payment.timestap = timezone.now()
     # payment.save()
     # # ##assign payment to the order
