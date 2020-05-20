@@ -1,14 +1,34 @@
-{% extends 'prodbase.html' %} {% load static %} {% load paystack %} {% block style %}
+{% extends 'prodbase.html' %}
+{% load static %} 
+{% load paystack %} 
 
+{% block style %}
+<title>Pay With Paystack</title>
 
-{% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+
+{% endblock %} 
+{% block content %}
 <main>
+    <section class="about-hero">
+
+        <div class="contain container mt-4">
+            <div class="descrip">
+                <h1>Pay With Paystack</h1>
+                <p> </p>
+            </div>
+            <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+        </div>
+
+    </section>
+    <!--Section: Contact v.2-->
+
 
     <div class="container wow fadeIn mt-4">
 
         <!-- Heading -->
         <div class="mt-4"></div>
-        <h2 class="mt-5 h2 text-center mb-4">Payment With Paystack</h2>
+        <h2 class="mt-5 h2 text-center mb-4">Pay With Paystack</h2>
 
         <!--Grid row-->
         <div class="row">
@@ -69,9 +89,11 @@
     </div>
     <form method="POST">
         {% csrf_token %}
-        <script src="https://js.paystack.co/v1/inline.js" data-key="pk_test_320e41039b2db6919cd963e88e48cab0246961d3"
-            data-email="{{email}}" data-amount="{{amount}}"
-            data-metadata='{"custom_fields":[{"name":"{{name}}", {"address":"{{address}}"]}'>
+        <script src="https://js.paystack.co/v1/inline.js" 
+            data-key="pk_test_320e41039b2db6919cd963e88e48cab0246961d3"
+            data-email="{{email}}" 
+            data-amount="{{amount}}"
+            data-metadata='{{name}}'>
         </script>
     </form>
 </main>

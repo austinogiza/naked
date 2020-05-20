@@ -1,0 +1,28 @@
+		<div class="col-12 col-sm-12 col-md-12 col-lg-4">
+			<!-- Right -->
+			<div class="mx-auto text-center">
+				<form action="" method="POST" >
+						{% csrf_token %}
+					<form>
+						<script
+					    src="https://js.paystack.co/v1/inline.js"
+					    data-key="{{data_key}}"
+					    data-email="{{emailAddress}}"
+					    data-amount="{{paystack_total}}"
+					    data-metadata='{"custom_fields": [
+					    {"first_name":"{{user.first_name}}"},
+					    {"last_name": "{{user.last_name}}"},
+					    {"address" : "{{user.address}}"},
+					    {"city": "{{user.city}}"},
+					    {"phone":"{{user.phone}}"}
+					    ]}'
+					  >
+					  </script>
+					</form>
+				</form>
+				{% if shipping_option == "showroom" or shipping_method|title == "Enugu Metro" %}
+				<a href="{% url 'cart:pay_on_delivery' %}" class="btn btn-sm btn-warning	 my_custom_button">Pay on Delivery</a><br>
+				{% endif %}
+				<a href="{% url 'shop:allProdCat' %}" class="btn btn-sm btn-primary my_custom_button">Keep Shopping</a>
+			</div>
+		</div>

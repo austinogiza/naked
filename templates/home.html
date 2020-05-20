@@ -3,6 +3,8 @@
 {% block style %}
 <title>Naked Solar Limited | Home Page </title>
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 {% endblock %}
 {% block content %}
 
@@ -10,13 +12,12 @@
 
     <section class="hero-header">
 
-        <div class="contin container">
-            <div class="box-1">
-                <h1>Your road </h1>
+        <div class="contin">
+            <div class="box-1 text-center">
+                <h1 class="text-center">Your road </h1>
                 <p>to going Naked</p>
                 <a href="{% url 'details:about'%}" class="btn btn-green">See Naked</a>
             </div>
-            <div class="box-2"><img src="{% static 'img/home.png'%}" alt="Naked Solar Limited Image"></div>
         </div>
     </section>
 
@@ -228,10 +229,82 @@
         <div class="shop-btn text-center"> <a href="{% url 'product:shop'%}" class="btn btn-green">Shop Online</a></div>
     </section>
 
+    <section class="journey mb-4">
+        <div class="title container">
+            <h1 class="text-center">Let Us Give You A Free Quote</h1>
+        </div>
+        <div class="box-contain container">
+            <div class="box-3">
+                <h1 class="wow fadeInLeft" data-wow-delay="0.3s" data-wow-duration="3s">Get A Quote For Solar Panel
+                    Installation</h1>
+                <p class="wow fadeInLeft" data-wow-delay="0.6s" data-wow-duration="3s">We’ll need to have a discussion
+                    to establish your needs and give you some indicative figures to help you choose what size & type of
+                    system you’d like. </p>
+                    <a class="btn btn-green" href="{% url 'details:quote' %}">Get Free Quote</a>
+            </div>
+            <div class="box-3"><img src="{% static 'img/quote.jpg' %}" alt=""></div>
+        </div>
+    </section>
 
-    <section class="go text-center mt-4 mb-4">
+<section class="review">
+    <div class="container">
+
+<div class="title text-center"><img src="{% static 'img/faq.svg' %}" alt="">
+<h1> Trusted customer reviews summary</h1>
+</div>
+<div class="box-9">
+    <div class="inner"><h1>5.0</h1>
+        <p><i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i><i
+                style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i><i
+                    style="color:#FF7310;" class="fas fa-star"></i></p>
+                    <p> Based on 7 google reviews</p>
+    </div>
+    <div class="inner">
+        <p>Customer Service 5.0 <i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;"
+                class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;"
+                class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i></p>
+      <p> Quality 5.0 <i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;"
+              class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;"
+              class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i></p>
+       <p> Value 5.0 <i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;"
+               class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i><i style="color:#FF7310;"
+               class="fas fa-star"></i><i style="color:#FF7310;" class="fas fa-star"></i></p>
+       </div>
+    <div class="inner">
+        <p><i style="color:#FF7310;" class="fas fa-thumbs-up"></i></p>
+        <p>Recommended</p>
+    </div>
+</div>
+
+    </div>
+
+</section>
+
+    <section class="go text-center mt-3 mb-4">
         <h1 class="mt-4 mb-4">Take our word for it.</h1>
         <a href="{% url 'product:contact' %}" class="btn btn-green">Go Naked</a>
     </section>
+
+
+
+    <section class="formerly mt-4 mb-4">
+      <div class="container">
+          <div class="box-8">
+              <h1>Call <a href="tel:+2348143139245">0814 313 9245</a></h1>
+              <p>Suite A12, Abraham Plaza, Plot 6 Ekukinam Street, Utako District, Utako, Abuja (FCT), Nigeria</p>
+              <p><a href="mailto:info@nakedsolar.ng">info@nakedsolar.ng</a></p>
+          </div>
+          <div class="box-8"><h1>As at 2020, Proudly </h1><img src="{% static 'img/faq.svg' %}" alt=""></div>
+          <div class="box-8">
+              <h1>FORMERLY KNOWN AS...</h1><img src="{% static 'img/major.jpg' %}" class="major" alt=""></div>
+      </div>
+    </section>
+
+
+    <section class="maintenance">
+        <div class="container text-center">#Planet Maintenance</div>
+    </section>
+  
 </main>
+
 {% endblock %}

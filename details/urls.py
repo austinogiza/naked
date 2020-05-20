@@ -13,6 +13,10 @@ urlpatterns = [
   
   
     path('phcn/', views.phcn, name='phcn'),
+    
+    path('quote/', views.quote, name='quote'),
+       path('contact-success/', views.success, name='contact-success'),
+        path('quote-success/', views.quotesend, name='quote-success'),
   
 
 ]

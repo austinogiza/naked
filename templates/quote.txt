@@ -1,4 +1,4 @@
-We just got a mail from our contact form
+We just got a mail from our Quote form
 
 Contact Name: 
 {{ name }}
@@ -6,6 +6,8 @@ Email:
 {{ email }}
 Phone:
 {{ phone  }}
+Address:
+{{ address  }}
 Subject:
 {{ subject  }}
 Message:

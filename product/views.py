@@ -86,13 +86,12 @@ class CheckoutView(View):
 
 
 class PaystackView(View):
-  
     def get(self, *args, **kwargs):
         customer_form = CustomerInfoForm()
         order = Order.objects.get(user=self.request.user, ordered=False)
         # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
         name = order.billing_address.name
-        amount = order.get_total() * 100
+        amount = order.get_total() 
         user = self.request.user
         email = self.request.user.email
         # order_item = order.item 
@@ -103,16 +102,8 @@ class PaystackView(View):
             'amount':amount,
             'email':email,
             'name': name,
-            'user': user,
-           
-
-            
-           
-            }
-            #if 
-         ## create payment 
-
-            
+            'user': user
+            }    
             return render(self.request, 'paystack.html', context)
         else:
             messages.warning(self.request, "You have not added billing address")
@@ -125,14 +116,45 @@ class PaystackView(View):
         user = self.request.user
         email = self.request.user.email
         # order_item = order.item 
-        print(amount)
+        print(self.request)
 
 
 
+def checkout(request):
+        order = Order.objects.get(user=request.user, ordered=False)
+        # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
+        name = order.billing_address.name
+        amount = order.get_total() * 100 
+        user = request.user
+        email = request.user.email
+        context ={
+            'order': order,
+            'amount':amount,
+            'email':email,
+            'name': name,
+            'user': user
+            }   
+        if request.user.is_authenticated:
+            try:
+                name= request.user
+                # full_name = str(request.user.get_full_name())
+                # address = str(request.user.address)
+                # city = str(request.user.city)
+                # phone = str(request.user.phone)
+            except:
+                print("User is not authenticated or has no email on record.")
+        if request.method == 'POST':
+            # token = request.POST['token']
+            # user_name = request.POST['user']
+            # email = request.POST['email']
+            # amount = request.POST['amount']
 
+            # print(token, name, email, amount)
+            print(request.POST)
+        return render(request, 'paystack.html', context)
 
 @receiver(payment_verified)
-def on_payment_verified(sender, ref, amount, **kwargs):
+def on_payment_verified(sender, ref, amount, request, **kwargs):
     """
     ref: paystack reference sent back.
     amount: amount in Naira.
@@ -378,7 +400,7 @@ def contact(request):
         name = form.cleaned_data.get('name')
         email = form.cleaned_data.get('email')
         phone = form.cleaned_data.get('phone')
-        subject = form.cleaned_data.get('suject')
+        subject = form.cleaned_data.get('subject')
         message = form.cleaned_data.get('message')
         template = get_template('contact.txt')
         content = {
@@ -405,7 +427,7 @@ def contact(request):
         ['themajorresources@gmail.com']
         )
         
-        return redirect('/success/')
+        return redirect('details:contact-success')
            
     return render(request, 'contact.html', context)
 

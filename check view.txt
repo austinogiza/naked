@@ -1,0 +1,78 @@
+if request.method == 'POST':
+		token = request.POST['reference']
+		try:
+			transactions=pypaystack.Transaction(authorization_key=pypaystack.api_key)
+			verification = transactions.verify(request.POST['reference'])
+			fname = verification[3]['metadata']['custom_fields'][0].get('first_name')
+			lname = verification[3]['metadata']['custom_fields'][1].get('last_name')
+			address = verification[3]['metadata']['custom_fields'][2].get('address')
+			city = verification[3]['metadata']['custom_fields'][3].get('city')
+			phone = verification[3]['metadata']['custom_fields'][4].get('phone')
+		except:
+			print("We could not fetch pypaystack details")
+		#Creating an order
+		try:
+			order_details = Order.objects.create(
+				token = token,
+				product_total = total,
+				shipping_cost = int(shipping_cost),#This is a string from db, we need it as an int here
+				total = total + int(shipping_cost), #shipping cost was str, take to int here
+				shipping_method = shipping_method,
+				shipping_option = shipping_option,
+				email = email,
+				billingName = full_name,
+				billingAddress = address,
+				billingCity = city,
+				billingPhoneNo = phone
+				)
+			order_details.save()
+			for order_item in cart_items:
+				oi = OrderItem.objects.create(
+					product = order_item.product.name,
+					quantity = order_item.quantity,
+					price = order_item.product.price,
+					size = order_item.notes,
+					order = order_details
+					)
+				oi.save()
+				#reduce product stock#
+				products = Product.objects.get(id=order_item.product.id) #get the product by id for each as we dey for loop still
+				products.stock = int(order_item.product.stock - order_item.quantity) #reduce the stock by order quantity
+				products.save() #save what remains of the product
+				#get the variation object via product name (a foreignkey of Products) and the size (a str obj)
+				#This should match a signle variation item, deduct it and save the remainder
+				try:
+					size = Variation.objects.get(product=products, title=order_item.notes)
+					size.v_stock -= order_item.quantity
+					size.save()
+				except:
+					e = sys.exc_info()
+					print(e)
+					print("We couldn't deduct size/variation inventory")						
+				
+				order_item.delete() #delete the item from the cart
+			try:
+				#Trying to send email using the email function
+				sendEmail(order_details.id)
+				print("Order Email Sent to customer")
+			except IOError as e:
+				return e
+				print("Order email was not sent")
+				print(e)
+			return redirect('order:thanks', order_details.id)
+		except ObjectDoesNotExist:
+			pass
+
+	return render(request, 'checkout.html', dict(cart_items = cart_items,
+		product_total = total,
+		counter = counter,
+		data_key=data_key,
+		paystack_total=paystack_total,
+		emailAddress=email,
+		phone=phone,
+		address=address,
+		shipping_cost = shipping_cost,
+		shipping_method = shipping_method,
+		shipping_option = shipping_option,
+		grand_total= int(shipping_cost)+total,
+		city=city))

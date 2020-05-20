@@ -1,5 +1,26 @@
-{% extends 'prodbase.html' %} {% block content %}
-<div class="container">
+{% extends 'prodbase.html' %}
+{% load static %}
+{% block style %}
+<title>Order Summary</title>
+
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+
+    <div class="contain container mt-4">
+        <div class="descrip">
+            <h1>Your Order Summary</h1>
+            <p> </p>
+        </div>
+        <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+    </div>
+
+</section>
+<!--Section: Contact v.2-->
+
+<div class="container mt-4">
     <div class="table-responsive text-nowrap table-hover">
         <h2>Order Summary</h2>
         <table class="table">

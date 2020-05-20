@@ -12,7 +12,7 @@ from .views import (HomeView,
   remove_order_from_cart,
   CheckoutView,
 PaystackView,
-
+checkout,
  add_home_to_cart
                     )
 
@@ -37,7 +37,7 @@ urlpatterns = [
      path('customer_info/', views.customer_info,
          name='customer_info'),
       path('pay-paystack/',
-          PaystackView.as_view(), name='pay-paystack'),
+          views.checkout, name='pay-paystack'),
          # path('customer_info', views.customer_info,
         # name='customer_info')
 

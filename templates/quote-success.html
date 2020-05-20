@@ -1,0 +1,26 @@
+{% extends 'prodbase.html' %}
+
+{% load static %}
+{% block style %}
+<title>Quote Sent - Naked Solar Limited </title>
+<link rel="stylesheet" href="{% static 'css/success.css'%}">
+{% endblock %}
+{% block content %}
+
+
+<main>
+
+    <section class="message">
+        <div class="container">
+
+            <div class="text  text-center">
+                <h1>Success!!</h1>
+                <p>We have received your mail. <br>We will reply shortly </p>
+                <div class="btn-cover text-center">
+                    <a class="btn btn-green" href="{% url 'details:home' %}">Go Home</a></div>
+            </div>
+            <div class="image"><img src="{% static 'img/messages.png'%}" alt=""></div>
+        </div>
+    </section>
+</main>
+{% endblock %}

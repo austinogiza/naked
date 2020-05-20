@@ -1,6 +1,27 @@
-{% extends 'prodbase.html' %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'prodbase.html' %} {% load crispy_forms_tags %}
+
+{% load static %}
+{% block style %}
+<title>Checkout Form</title>
+
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+{% endblock %}
+{% block content %}
 <!--Main layout-->
 <main>
+    <section class="about-hero">
+
+        <div class="contain container mt-4">
+            <div class="descrip">
+                <h1>Checkout Form</h1>
+                <p> </p>
+            </div>
+            <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+        </div>
+
+    </section>
+    <!--Section: Contact v.2-->
+
     <div class="container wow fadeIn">
 
         <!-- Heading -->
