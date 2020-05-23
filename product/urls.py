@@ -11,7 +11,7 @@ from .views import (HomeView,
  add_single_to_cart,
   remove_order_from_cart,
   CheckoutView,
-PaystackView,
+# PaystackView,
 checkout,
  add_home_to_cart
                     )

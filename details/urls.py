@@ -15,6 +15,13 @@ urlpatterns = [
     path('phcn/', views.phcn, name='phcn'),
     
     path('quote/', views.quote, name='quote'),
+    path('journey/', views.journey, name='journey'),
+
+   path('maintenance/', views.maintenance, name='maintenance'),
+   path('installation/', views.installation, name='installation'),
+      path('gallery/', views.gallery, name='gallery'),
+   
+
        path('contact-success/', views.success, name='contact-success'),
         path('quote-success/', views.quotesend, name='quote-success'),
   

@@ -18,6 +18,7 @@ LABEL_CHOICE = (
     ('D', 'danger'),
 )
 
+shipping = int(5000)
 
 class Item(models.Model):
     title = models.CharField(max_length=50, unique=True, blank=False)
@@ -33,6 +34,9 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        unique_together = ('title', 'slug')
 
     def get_absolute_url(self):
         return reverse('product:products', kwargs={'slug': self.slug})
@@ -69,7 +73,7 @@ class OrderItem(models.Model):
 
     def get_final_price(self):
         return self.get_total_item_price()
-
+    
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,

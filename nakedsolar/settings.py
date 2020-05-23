@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'details'
+    'details',
+    'pypaystack'
 
 ]
 
@@ -157,8 +158,11 @@ SITE_ID = 1
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/accounts/login'
+
 LOGIN_REDIRECT_URL ='/'
-ACCOUNT_LOGOUT_ON_GET =True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "Nakedsolar.ng "
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 PAYSTACK_SUCCESS_URL = '/'

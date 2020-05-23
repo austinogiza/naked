@@ -39,7 +39,7 @@
                 <!--Card-->
                 <div class="card text-center">
 
-                    <!-- {% paystack_button amount=amount email=email button_class="btn btn-green" %} -->
+                 {% paystack_button amount=amount email=email button_class="btn btn-green" %} 
                     <!--Card content-->
 
                 </div>
@@ -53,7 +53,7 @@
                 <!-- Heading -->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">{{ order.items.count}}</span>
+                    <span class="badge green">{{ order.items.count}}</span>
                 </h4>
 
                 <!-- Cart -->
@@ -91,9 +91,10 @@
         {% csrf_token %}
         <script src="https://js.paystack.co/v1/inline.js" 
             data-key="pk_test_320e41039b2db6919cd963e88e48cab0246961d3"
-            data-email="{{email}}" 
+            data-email="{{email}}"
+            data-ref 
             data-amount="{{amount}}"
-            data-metadata='{{name}}'>
+            data-user='{{user}}'>
         </script>
     </form>
 </main>

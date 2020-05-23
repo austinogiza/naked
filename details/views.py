@@ -21,9 +21,24 @@ def faq(request):
 def phcn(request):
     return render(request, 'phcn.html')
 
+
+def journey(request):
+    return render(request, 'journey.html')
+
+
+def maintenance(request):
+    return render(request, 'maintenance.html')
+
 def success(request):
     return render(request, 'contact-success.html')
 
+
+def installation(request):
+    return render(request, 'installation.html')
+
+
+def gallery(request):
+    return render(request, 'gallery.html')
 
 def quote(request):
     form = QuoteForm(request.POST)

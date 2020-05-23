@@ -16,6 +16,9 @@ from django.template.loader import get_template, render_to_string
 from paystack.signals import payment_verified
 from django.dispatch import receiver
 import datetime
+
+import pypaystack
+from pypaystack import Transaction
 # Create your views here.
 
 
@@ -86,37 +89,29 @@ class CheckoutView(View):
 
 
 class PaystackView(View):
-    def get(self, *args, **kwargs):
-        customer_form = CustomerInfoForm()
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
-        name = order.billing_address.name
-        amount = order.get_total() 
-        user = self.request.user
-        email = self.request.user.email
-        # order_item = order.item 
-        if order.billing_address:
-            context ={
-            'order': order,
-            'customer_form': customer_form,
-            'amount':amount,
-            'email':email,
-            'name': name,
-            'user': user
-            }    
-            return render(self.request, 'paystack.html', context)
-        else:
-            messages.warning(self.request, "You have not added billing address")
-            return redirect("product:checkout")
-    def post(self, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
-        name = order.billing_address.name
-        amount = order.get_total() * 100
-        user = self.request.user
-        email = self.request.user.email
-        # order_item = order.item 
-        print(self.request)
+     def get(self, *args, **kwargs):
+         customer_form = CustomerInfoForm()
+         order = Order.objects.get(user=self.request.user, ordered=False)
+         # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
+         name = order.billing_address.name
+         amount = order.get_total() 
+         user = self.request.user
+         email = self.request.user.email
+         # order_item = order.item 
+         if order.billing_address:
+             context ={
+             'order': order,
+             'customer_form': customer_form,
+             'amount':amount,
+             'email':email,
+             'name': name,
+             'user': user
+             }    
+             return render(self.request, 'paystack.html', context)
+         else:
+             messages.warning(self.request, "You have not added billing address")
+             return redirect("product:checkout")
+     
 
 
 
@@ -124,7 +119,8 @@ def checkout(request):
         order = Order.objects.get(user=request.user, ordered=False)
         # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
         name = order.billing_address.name
-        amount = order.get_total() * 100 
+        amount = order.get_total() 
+         
         user = request.user
         email = request.user.email
         context ={
@@ -134,31 +130,40 @@ def checkout(request):
             'name': name,
             'user': user
             }   
-        if request.user.is_authenticated:
-            try:
-                name= request.user
-                # full_name = str(request.user.get_full_name())
-                # address = str(request.user.address)
-                # city = str(request.user.city)
-                # phone = str(request.user.phone)
-            except:
-                print("User is not authenticated or has no email on record.")
         if request.method == 'POST':
-            # token = request.POST['token']
-            # user_name = request.POST['user']
-            # email = request.POST['email']
-            # amount = request.POST['amount']
-
-            # print(token, name, email, amount)
-            print(request.POST)
+            pypaystack.api_key = settings.PAYSTACK_SECRET_KEY
+            token = request.POST['reference']
+            try:
+                user_name = request.POST['user']
+                email = request.POST['email']
+                amount = request.POST['amount']
+                transactions=pypaystack.Transaction(authorization_key=pypaystack.api_key)
+                verification = transactions.verify(request.POST['reference'])
+                order = Order.objects.get(user=request.user, ordered=False)
+                ##create payment 
+                payment = Payment()
+                payment.reference = token
+                payment.amount = amount
+                payment.user = request.user
+                payment.timestap = timezone.now()
+                payment.save()
+             # ##assign payment to the order
+                order.ordered = True
+                order.payment = payment
+                order.save()
+                return redirect('product:shop')
+            except:
+                print("We could not fetch pypaystack details")
         return render(request, 'paystack.html', context)
 
+
 @receiver(payment_verified)
-def on_payment_verified(sender, ref, amount, request, **kwargs):
+def on_payment_verified(sender, ref, amount,  **kwargs):
     """
     ref: paystack reference sent back.
     amount: amount in Naira.
     """
+   
     # User = None
     # if request.user.is_authenicated():
     #     User = request.user 

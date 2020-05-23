@@ -52,34 +52,6 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
 
 
-    <style type="text/css">
-        html,
-        body,
-        header,
-        .carousel {
-            height: 100vh;
-        }
-
-        @media (max-width: 740px) {
-
-            html,
-            body,
-            header,
-            .carousel {
-                height: 100vh;
-            }
-        }
-
-        @media (min-width: 800px) and (max-width: 850px) {
-
-            html,
-            body,
-            header,
-            .carousel {
-                height: 100vh;
-            }
-        }
-    </style>
 </head>
 
 
@@ -90,14 +62,13 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
 
 
         <!-- Navbar -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark green scrolling-navbar">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark green">
             <div class="container">
 
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect" href="{% url 'details:home' %}">
                     <strong class="blue-text">
-                        <img src="{% static 'img/log.png' %}" class="rounded-circle z-depth-0" alt="avatar image"
-                            height="45">
+                        <img src="{% static 'img/faq.svg' %}" class="" alt="avatar image" height="45">
                     </strong>
                 </a>
 
@@ -105,7 +76,11 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
+                    <a class="btn btn-green" href="{% url 'details:quote' %}">Get Free Quote
+                    </a>
                     <span class="navbar-toggler-icon"></span>
+
+
                 </button>
 
                 <!-- Links -->
@@ -127,18 +102,25 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                             <a class="nav-link waves-effect" href="{% url 'product:shop' %}">Shop Online
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'details:about' %}">About
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"> Services
                             </a>
-                        </li>
+                            <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
 
+                                <a class="dropdown-item" href="{% url 'details:maintenance' %}">Maintenance</a>
+                                <a class="dropdown-item" href="{% url 'details:installation'%}">Installation</a>
+                                <a class="dropdown-item" href="{% url 'details:gallery'%}">Our Gallery</a>
+
+                            </div>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"> Naked Truth
                             </a>
                             <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                                <a class="dropdown-item" href="#">The Journey</a>
+                                <a class="dropdown-item" href="{% url 'details:about' %}">About Us</a>
+                                <a class="dropdown-item" href="{% url 'details:journey'%}">The Journey</a>
                                 <a class="dropdown-item" href="{% url 'details:phcn'%}">PHCN Tariff</a>
 
                                 <a class="dropdown-item" href="{% url 'details:faq'%}">FAQ</a>
@@ -147,9 +129,9 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'product:contact' %}">Contact Us</a>
                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="{% url 'details:quote' %}">Get Free Quote</a>
-                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'details:quote' %}">Get Free Quote</a>
+                        </li>
                     </ul>
 
                     <!-- Right -->
@@ -213,9 +195,11 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
             </div>
             <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
                 {{ message }}
+
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
             </div>
             {% endfor %} {% endif %}
         </div> {%block content %} {%endblock%}
@@ -235,16 +219,16 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                     <div class="mb-5 flex-center">
 
                         <!-- Facebook -->
-                        <a href="" class="fb-ic">
+                        <a href="" class="fb-ic" target="_blank">
                             <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!-- Twitter -->
-                        <a href="" class="tw-ic">
+                        <a href="" class="tw-ic" target="_blank">
                             <i class="fab fa-whatsapp fa-lg white-text mr-md-5 mr-3 fa-2x" target="_blank"> </i>
                         </a>
 
                         <!--Instagram-->
-                        <a href="" class="ins-ic">
+                        <a href="" class="ins-ic" target="_blank">
                             <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
 

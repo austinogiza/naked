@@ -1,0 +1,152 @@
+{% extends 'prodbase.html' %}
+{% load static %}
+{% block style %}
+<title>The Journey | Naked Solar Limited </title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+
+{% endblock %}
+{% block content %}
+
+
+<main>
+    <section class="hero-header">
+
+        <div class="contin">
+            <div class="box-1 text-center">
+                <h1 class="text-center">THE JOURNEY.</h1>
+                <p>to going Naked</p>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+            <div class="title text-center mb-3">
+                <h1 class="mt-2  " data-wow-delay="0.5s" data-wow-duration="3s">At NAKED, we guide you
+                </h1>
+                <h2 class="mt-2  " data-wow-delay="0.8s" data-wow-duration="3s">And stay with you even after
+                    your decision.</h2>
+
+            </div>
+
+            <div class="body mt-5 mb-4">
+
+                <div class="sepa">
+                    <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">Step 1.
+                    </h1>
+                    <h3 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+
+                        The site visit
+                    </h3>
+                    <p class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">The choice of the most
+                        suitable solar system to go for is one of the trickiest part of going Naked, it is an integral
+                        part, and the overall health and longevity of the solar system after installation largely
+                        depends on the early choices you make, right from the very beginning.
+                        This is why it is important for an experienced surveyor from Naked visit you to help you make
+                        this decision.<br>
+
+                        Not to worry, visits usually do not take a very long time, and it is usually scheduled by you
+                        for convenience, during this period, we measure up, check the site and electrics, and take a lot
+                        of photos.
+                        <br>
+                        We would be engaging you in a conversation about your needs and budget, and also evaluate all
+                        options out there, we the aid of specialised equipments and survey, we would produce appropriate
+                        suggestions which are usually emailed to you pithing two working days, if you want to change the
+                        plan or try a different option, no problem, we would fine-tune things until you are happy and
+                        satisfied with the set up.
+                    </p>
+
+                </div>
+                <div class="sepa-image">
+                    <img src="{% static 'img/first.jpg'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-5 mb-2">
+
+
+            <div class="body mt-5 mb-4">
+                <div class="sepa-image">
+                    <img src="{% static 'img/paper.jpg'%}" alt="">
+                </div>
+                <div class="sepa">
+                    <h1 class="mt-2">Step 2. </h1>
+                    <h3 class="mt-2">The Installation
+
+                    </h3>
+                    <p class="mt-2">We arrive at the site location with materials and a team of smiling installers and
+                        electricians.
+
+                        Home installations usually take a day, we begin and complete the entire process in one day,
+                        except for special circumstances. <br>
+
+                        Business Installations can take a little longer, depending on the complexity of your site.
+
+                        We use state of the art equipments to carry out installations, when needed, we use scaffolding,
+                        and this is erected one day before the installation day, and removed no latter than a day after.
+                        <br>
+
+                        The installation process is done with minimal disruption, your power is only off for a few
+                        minutes, we have a team of polite installers and usually clean up after work.
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <section class="energy">
+        <div class="body">
+            <p>We know how difficult it must be to have made the decision to go solar, and then getting faced with the
+                challenge of getting the right solar system could be another hurdle to cross, but that’s why are here,
+                to tell you the NAKED truth about going solar and making the right choices. <br> At NAKED, we guide you
+                through the process and stay with you even after your decision.</p>
+        </div>
+
+    </section>
+
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+
+
+            <div class="body mt-5 mb-4">
+
+                <div class="sepa">
+                    <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">Step 3.
+                    </h1>
+                    <h3 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+                        Paper Work
+                    </h3>
+                    <p class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">We will send you your
+                        certificate of completion and final receipt, if you ever need help with the filling of the
+                        forms, we are only a phone call away.
+                        <br>
+
+                        These paperwork is to be kept in a safe place, as it is important for reference purposes.
+
+                    </p>
+
+                </div>
+                <div class="sepa-image">
+                    <img src="{% static 'img/final.png'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cont text-center ">
+
+        <a href="{% url 'product:contact' %}" type="button" class="btn orange mt-5">Contact Us</a>
+    </section>
+</main>
+{% endblock %}

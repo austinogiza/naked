@@ -13,13 +13,14 @@
 }
 
 .hero-header {
-    min-height: 600px;
+    height: 700px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: -40px;
+    margin-top: -100px;
+
 
 }
 
@@ -33,11 +34,11 @@
     color: #ffffff;
     position: relative;
     justify-content: center;
-    background: url('../img/shop.jpg') no-repeat center center/cover;
+    background: url('../img/hea.jpg') no-repeat center center/cover;
     z-index: 2;
 }
 
-.hero-header .contin::before{
+.hero-header .contin::before {
     content: '';
     width: 100%;
     height: 100%;
@@ -47,7 +48,7 @@
 }
 
 .hero-header .box-1 {
-   
+
     z-index: 500;
 }
 
@@ -57,7 +58,7 @@
     font-size: 76px;
     font-weight: 600;
     text-transform: capitalize;
-z-index: 500;
+    z-index: 500;
 }
 
 .hero-header .box-1 p {
@@ -122,7 +123,7 @@ z-index: 500;
 .journey .box-3 h1 {
     font-family: 'Poppins',
         sans-serif;
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 600;
     margin: 10px 0;
 }
@@ -161,7 +162,7 @@ z-index: 500;
 .steps .title h1 {
     font-family: 'Poppins',
         sans-serif;
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 600;
     margin: 10px 0;
 
@@ -352,26 +353,27 @@ shop section */
     font-size: 36px;
     font-weight: 600;
 }
+
 /* 
 formerly */
-.formerly{
+.formerly {
     width: 100%;
     min-height: 400px;
     background: var(--green);
-   padding: 50px 0;
+    padding: 50px 0;
 
 }
 
 .formerly .container {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-grid-auto-rows: minmax(300px,auto);
-grid-gap: 50px;
-align-items: center;
-justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    grid-gap: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
-.formerly .box-8{
+.formerly .box-8 {
     display: flex;
     flex-direction: column;
     border-right: 2px solid #ffffff;
@@ -386,50 +388,52 @@ justify-content: center;
 }
 
 .formerly .box-8 p {
-     font-family: 'Montserrat',
-         sans-serif;
-     font-size: 16px;
-     font-weight: 300;
-      color: #ffffff;
- }
-.formerly .box-8 a{
-     font-family: 'Poppins',
-     sans-serif;
-     font-size: 18px;
-     text-transform: uppercase;
-     text-decoration: none;
-       color: #FF7310 ;
-       transition: 0.4s ease;
-}
-
-.formerly .box-8 a:hover{
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 16px;
+    font-weight: 300;
     color: #ffffff;
 }
 
-.formerly .box-8 h1{
+.formerly .box-8 a {
     font-family: 'Poppins',
-    sans-serif;
+        sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FF7310;
+    transition: 0.4s ease;
+}
+
+.formerly .box-8 a:hover {
+    color: #ffffff;
+}
+
+.formerly .box-8 h1 {
+    font-family: 'Poppins',
+        sans-serif;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 100;
-    margin: 10px 0; 
+    margin: 10px 0;
     color: #ffffff;
 }
-.formerly img{
+
+.formerly img {
     width: 200px;
     height: 150px;
 }
 
 /* maintenance */
 
-.maintenance{
+.maintenance {
     width: 100%;
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins',
-    sans-serif;
+        sans-serif;
     font-size: 56px;
     font-weight: 600;
     color: #ffffff;
@@ -437,68 +441,77 @@ justify-content: center;
     text-transform: uppercase;
     background: url('../img/solar.jpg') no-repeat center center/cover;
 }
+
 /* 
 review */
-.review{
+.review {
     width: 100%;
     min-height: 600px;
 }
 
-.review .container{
+.review .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.review .title img{
-    width: 200px;
-height: 150px;
+
+.review .title img {
+    width: 180px;
+    height: 130px;
 }
-.review .title h1{
-    
+
+.review .title h1 {
+
     font-family: 'Poppins',
-    sans-serif;
-    font-size: 24px;
+        sans-serif;
+    font-size: 21px;
     margin: 20px 0;
 }
-.review .box-9{
+
+.review .box-9 {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(300px, auto);
     grid-gap: 40px;
     align-items: center;
 }
 
-.review .inner:nth-child(1){
-display: flex;
-align-items: center;
-flex-direction: column;
-}
-.review .inner:nth-child(1) h1 {
-font-family: 'Poppins',
-sans-serif;
-font-size: 44px;
-font-weight: 600;
-color: #FF7310;
+.review .inner:nth-child(1) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.review .inner:nth-child(1) i{
+.review .inner:nth-child(1) h1 {
+    font-family: 'Poppins',
+        sans-serif;
+    font-size: 44px;
+    font-weight: 600;
+    color: #FF7310;
+}
+
+.review .inner:nth-child(1) i {
     font-size: 21px;
 }
+
 .review .inner:nth-child(2) {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .review .inner:nth-child(3) {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .review .inner:nth-child(3) i {
     font-size: 36px;
 }
+
 @keyframes upDown {
     from {
         transform: translateY(0px);
@@ -510,12 +523,7 @@ color: #FF7310;
 }
 
 @media only screen and (max-width:800px) {
-    .hero-header .contin {
 
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: minmax(300px, auto);
-
-    }
 
     .journey .box-contain {
 
@@ -560,21 +568,24 @@ color: #FF7310;
         grid-auto-rows: minmax(100px, auto);
         grid-gap: 50px;
     }
+
     .formerly .container {
-       
+
         grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: minmax(100px, auto);
         grid-gap: 10px;
-      
+
     }
+
     .formerly .box-8 {
-    
+
         border-right: none;
     }
+
     .maintenance {
-        
+
         font-size: 36px;
-       
+
     }
 
 }
@@ -583,16 +594,13 @@ color: #FF7310;
     .hero-header .box-1 h1 {
         font-family: 'Poppins',
             sans-serif;
-        font-size: 46px;
+        font-size: 42px;
         font-weight: 600;
         margin-top: 100px;
 
     }
 
-    .hero-header .contin img {
-        width: 100%;
-        height: 300px;
-    }
+
 
     .journey .box-contain img {
         width: 100%;
@@ -603,7 +611,7 @@ color: #FF7310;
     .journey .title h1 {
         font-family: 'Poppins',
             sans-serif;
-        font-size: 36px;
+        font-size: 34px;
         font-weight: 600;
         margin: 10px 0;
 
@@ -614,23 +622,26 @@ color: #FF7310;
 
         padding: 10px;
     }
-.maintenance {
 
-    font-size: 26px;
+    .maintenance {
 
-}
+        font-size: 26px;
+
+    }
+
     /* .steps .steps-box .box-4 img {
         width: 100%;
         height: 300px;
 
     } */
-.review .box-9 {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: 10px;
-    align-items: center;
-}
+    .review .box-9 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 10px;
+        align-items: center;
+    }
+
     .steps .steps-box .box-img img {
         width: 100%;
         height: 300px;
@@ -647,7 +658,7 @@ color: #FF7310;
     .go h1 {
         font-family: 'Poppins',
             sans-serif;
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 600;
     }
 

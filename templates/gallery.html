@@ -1,0 +1,62 @@
+{% extends 'prodbase.html' %}
+{% load static %}
+{% block style %}
+<title> Gallery | Naked Solar Limited </title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+<link rel="stylesheet" href="{% static 'css/gallery.css'%}">
+
+{% endblock %}
+{% block content %}
+
+
+<main>
+    <section class="about-hero">
+
+        <div class="contain container mt-4">
+            <div class="descrip">
+                <h1>Gallery.</h1>
+                <p>We have installed nationwide.</p>
+            </div>
+            <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+        </div>
+
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+            <div class="title text-center mb-3">
+                <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">Take A Look
+                </h1>
+                <h2 class="mt-2 " data-wow-delay="0.8s" data-wow-duration="3s">At Our Gallery
+                </h2>
+
+            </div>
+
+    </section>
+
+    <section class="gallery-container">
+
+        <div class="container">
+
+            <div class="gallery-box"><img src="{% static 'img/gal.jpeg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal2.png' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal3.jpeg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal1.jpg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal4.jpg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal5.jpg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal6.jpg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal7.jpg' %}" alt=""></div>
+            <div class="gallery-box"><img src="{% static 'img/gal8.jpg' %}" alt=""></div>
+
+        </div>
+    </section>
+
+
+    <section class="cont text-center ">
+
+        <a href="{% url 'product:contact' %}" type="button" class="btn orange mt-5">Contact Us</a>
+    </section>
+</main>
+{% endblock %}

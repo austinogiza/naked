@@ -7,5 +7,16 @@
 .header-hero {
     height: 600px;
     width: 100%;
-    background: url('../img/header.png') no-repeat center center/cover;
+    background: url('../img/header.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.header-hero::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    top: 0;
+    left: 0;
 }
