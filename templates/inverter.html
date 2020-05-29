@@ -1,0 +1,170 @@
+{% extends 'prodbase.html' %}
+{% load static %}
+{% block style %}
+<title>Inverter | Naked Solar Limited </title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+
+{% endblock %}
+{% block content %}
+
+
+<main>
+    <section class="about-hero">
+
+        <div class="contain container mt-4">
+            <div class="descrip">
+                <h1>Inverter</h1>
+                <p>Everything you need to know </p>
+            </div>
+            <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+        </div>
+
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+            <div class="title text-center mb-3">
+                <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">INVERTER
+                </h1>
+                <h2 class="mt-2 " data-wow-delay="0.8s" data-wow-duration="3s">
+                </h2>
+
+            </div>
+
+            <div class="body mt-5 mb-4">
+
+                <div class="sepa">
+                    <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">What is an Inverter?
+                    </h1>
+                    <h3 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+An inverter converts the DC voltage to an
+AC voltage.
+                    </h3>
+                    <p class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">In most cases, the input DC voltage is
+                        usually lower while the output AC is equal to the grid supply voltage of either 120 volts, or
+                        240 Volts depending on the country. <br>
+                        The inverter may be built as standalone equipment for applications such as solar power, or to
+                        work as a backup power supply from batteries which are charged separately.<br>
+                        The other configuration is when it is a part of a bigger circuit such as a power supply unit, or
+                        a UPS. <br> In this case, the inverter input DC is from the rectified mains AC in the PSU, while from
+                        either the rectified AC in the in the UPS when there is power, and from the batteries whenever
+                        there is a power failure.
+
+                    </p>
+
+                </div>
+                <div class="sepa-image">
+                    <img src="{% static 'img/what.jpeg'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-5 mb-2">
+
+
+            <div class="body mt-5 mb-4">
+                <div class="sepa-image">
+                    <img src="{% static 'img/inve.jpg'%}" alt="">
+                </div>
+                <div class="sepa">
+                    <h1 class="mt-2">Basic inverter operation </h1>
+                    <h3 class="mt-2">
+
+                    </h3>
+                    <p class="mt-2">The basic circuits include an oscillator, control circuit, drive circuit for the
+                        power devices, switching devices, and a transformer. <br>
+                        The conversion of dc to alternating voltage is achieved by converting energy stored in the dc
+                        source such as the battery, or from a rectifier output, into an alternating voltage. <br> This
+                        is
+                        done using switching devices which are continuously turned on and off, and then stepping up
+                        using the transformer. Although there are some configurations which do not use a transformer,
+                        these are not widely used.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <section class="energy">
+        <div class="body">
+            <p>
+
+                Inverters are used for a variety of applications that range from small car adapters to household or
+                office applications, and large grid systems. <br>Uninterruptible power supplies <br>
+                 As standalone inverters <br>
+                 In solar power systems <br>
+            
+
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+
+
+            <div class="body mt-5 mb-4">
+
+                <div class="sepa">
+                    <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">Inverter output waveforms
+                    </h1>
+                    <h3 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+                   
+                    </h3>
+                    <p class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">The inverters are classified according
+                        to their output waveforms with the three common types being the square wave, the pure sine wave
+                        and the modified sine wave. <br>
+                        The square wave is simple and cheaper, however, it has a low power quality compared to the other
+                        two. The modified square wave provides a better power quality (THD~ 45%) and is suitable for
+                        most electronic equipment.<br> These have rectangular pulses that have dead spots between the
+                        positive half cycle and the negative half cycle (THD about 24%).
+
+
+                    </p>
+
+                </div>
+                <div class="sepa-image">
+                    <img src="{% static 'img/inver.jpg'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="callback">
+
+       <div class="contain"><a href="{% url 'product:callback' %}" class="call-btn let-btn">Let Us Call You Back</a>
+           <a href="{% url 'product:battery' %}" class="call-btn sol-btn">Battery Options</a></div>
+   </section>
+
+   <section class="formerly mt-4 mb-4">
+       <div class="container">
+           <div class="box-8">
+               <h1>Call <a href="tel:+2348143139245">0814 313 9245</a></h1>
+               <p>Suite A12, Abraham Plaza, Plot 6 Ekukinam Street, Utako District, Utako, Abuja (FCT), Nigeria</p>
+               <p><a href="mailto:info@nakedsolar.ng">info@nakedsolar.ng</a></p>
+           </div>
+           <div class="box-8">
+               <h1>As at 2020, Proudly </h1><img src="{% static 'img/faq.svg' %}" alt="">
+           </div>
+           <div class="box-8">
+               <h1>FORMERLY KNOWN AS...</h1><img src="{% static 'img/major.jpg' %}" class="major" alt="">
+           </div>
+       </div>
+   </section>
+    <section class="cont text-center ">
+
+        <a href="{% url 'product:contact' %}" type="button" class="btn orange mt-5">Contact Us</a>
+    </section>
+</main>
+{% endblock %}

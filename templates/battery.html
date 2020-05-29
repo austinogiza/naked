@@ -1,0 +1,162 @@
+{% extends 'prodbase.html' %}
+{% load static %}
+{% block style %}
+<title>
+    Batteries and inverters
+ | Naked Solar Limited </title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+
+{% endblock %}
+{% block content %}
+
+
+<main>
+    <section class="about-hero">
+
+        <div class="contain container mt-4">
+            <div class="descrip">
+                <h1>
+                    Batteries and inverters
+</h1>
+                <p>Everything you need to know </p>
+            </div>
+            <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+        </div>
+
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+            <div class="title text-center mb-3">
+                <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+                    Batteries And Inverters
+
+                </h1>
+                <h2 class="mt-2 " data-wow-delay="0.8s" data-wow-duration="3s">
+                </h2>
+
+            </div>
+
+            <div class="body mt-5 mb-4">
+
+                <div class="sepa">
+                    <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">Batteries
+                    </h1>
+                    <h3 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+Lead-acid batteries are often used in renewable energy systems. </h3>
+                    <p class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">However, lithium batteries, though
+                        more expensive than lead-acid, are becoming more affordable and can have a much longer life.
+                        Nickel iron batteries are harder to find and less efficient than lead-acid or lithium ion but
+                        have very long lives. <br> Flow batteries (zinc bromine and vanadium redox) and flywheel
+                        batteries
+                        can be used in renewable energy systems but are complex and expensive. <br>
+                       
+
+                    </p>
+
+                </div>
+                <div class="sepa-image">
+                    <img src="{% static 'img/bat.jpg'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-why">
+
+        <div class="contain container mt-5 mb-2">
+
+
+            <div class="body mt-5 mb-4">
+                <div class="sepa-image">
+                    <img src="{% static 'img/comp.jpg'%}" alt="">
+                </div>
+                <div class="sepa">
+                    <h1 class="mt-2">Battery Composition</h1>
+                    <h3 class="mt-2">
+
+                    </h3>
+                    <p class="mt-2"> Most batteries are composed of a number of cells. In stand-alone power systems, the
+                        battery bank
+                        voltages commonly used are 12V, 24V, 48V or 120V. <br> Batteries can be supplied as a mono-block
+                        but
+                        usually come as individual 2V cells which are assembled into a complete battery on site. A 12V
+                        battery consists of six 2V cells, and so on. Battery banks should provide a number of days’
+                        energy reserve — three to seven days is typical.
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <section class="energy">
+        <div class="body">
+            <p>Standards relating to lead-acid batteries for stationary purposes include AS 2676-1992, Guide to the
+                installation, maintenance, testing and replacement of secondary batteries in buildings; <br> AS 3011-1992,
+                Electrical installations — secondary batteries installed in buildings; AS 4029-1994, Stationary
+                batteries — lead-acid; and AS 4086-1993, Secondary batteries for use with stand-alone power systems.
+        </div>
+
+    </section>
+
+
+    <section class="about-why">
+
+        <div class="contain container mt-3 mb-3">
+
+
+            <div class="body mt-5 mb-4">
+
+                <div class="sepa">
+                    <h1 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">Ground panels vs. roof
+                        panels
+                    </h1>
+                    <h3 class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">
+                        Is there a maintenance difference?
+                    </h3>
+                    <p class="mt-2 " data-wow-delay="0.5s" data-wow-duration="3s">The only real difference
+                        between maintaining ground-mounted solar systems and roof solar systems is that ground panels
+                        are easier to access, and therefore easier to keep clean. <br> If you notice a buildup of snow
+                        or
+                        other debris, you can simply sweep it off with a broom.
+
+                    </p>
+
+                </div>
+                <div class="sepa-image">
+                    <img src="{% static 'img/top.jpeg'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="callback">
+
+    <div class="contain"><a href="{% url 'product:callback' %}" class="call-btn let-btn">Let Us Call You Back</a>
+        <a href="{% url 'details:installation' %}" class="call-btn sol-btn">Installation Options</a></div>
+</section>
+
+<section class="formerly mt-4 mb-4">
+    <div class="container">
+        <div class="box-8">
+            <h1>Call <a href="tel:+2348143139245">0814 313 9245</a></h1>
+            <p>Suite A12, Abraham Plaza, Plot 6 Ekukinam Street, Utako District, Utako, Abuja (FCT), Nigeria</p>
+            <p><a href="mailto:info@nakedsolar.ng">info@nakedsolar.ng</a></p>
+        </div>
+        <div class="box-8">
+            <h1>As at 2020, Proudly </h1><img src="{% static 'img/faq.svg' %}" alt="">
+        </div>
+        <div class="box-8">
+            <h1>FORMERLY KNOWN AS...</h1><img src="{% static 'img/major.jpg' %}" class="major" alt="">
+        </div>
+    </div>
+</section>
+    <section class="cont text-center ">
+
+        <a href="{% url 'product:contact' %}" type="button" class="btn orange mt-5">Contact Us</a>
+    </section>
+</main>
+{% endblock %}

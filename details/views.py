@@ -40,6 +40,10 @@ def installation(request):
 def gallery(request):
     return render(request, 'gallery.html')
 
+
+def operation(request):
+    return render(request, 'operation.html')
+
 def quote(request):
     form = QuoteForm(request.POST)
     context = {

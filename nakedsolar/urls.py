@@ -11,7 +11,8 @@ urlpatterns = [
     path('', include('product.urls')),
     path('', include('details.urls')),
     path('accounts/', include('allauth.urls')),
-  # path('pay-with-paystack', include('paystack.urls')),
-     path("paystack", include(('paystack.urls','paystack'),namespace='paystack')),
+    path("paystack", include(('paystack.urls', 'paystack'), namespace='paystack')),
     
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

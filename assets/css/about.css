@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins:700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+font {
+    font-family: 'Poppins',
+        sans-serif;
+    font-family: 'Montserrat',
+        sans-serif;
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+:root {
+
+    --green: #01600C;
+    --milk: #eff1f6;
+    --orange: #FF7310;
+    --white: #ffffff;
+    --black: rgba(0, 0, 0, 0.15);
+
+}
+
+/* 
+about-hero */
+.about-hero {
+    width: 100%;
+    height: 600px;
+    background: var(--green);
+    color: var(--white);
+
+}
+
+.about-hero .contain {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(500px, auto);
+    grid-gap: 50px;
+}
+
+
+.about-hero .contain h1 {
+    font-size: 64px;
+    font-family: 'Poppins',
+        sans-serif;
+
+    font-weight: 600;
+}
+
+.about-hero .contain p {
+    font-size: 16px;
+    font-family: 'Montserrat',
+        sans-serif;
+
+    font-weight: lighter;
+}
+
+.about-hero .contain .descrip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.about-hero .contain img {
+    width: 100%;
+    height: 100%;
+}
+
+/* about-why */
+.about-why {
+    display: flex;
+    flex-direction: column;
+    background: var(--milk);
+    width: 100%;
+    min-height: 300px;
+
+}
+
+.about-why .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.about-why .title h1 {
+
+    font-family: 'Poppins',
+        sans-serif;
+    font-size: 44px;
+    font-weight: 600;
+
+}
+
+.about-why .title h2 {
+
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.about-why .title p {
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.about-why .body img {
+    width: 100%;
+    height: 100%;
+}
+
+.about-why .body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(300, auto);
+}
+
+.about-why .body img {
+    width: 100%;
+    height: 600px;
+}
+
+.about-why .body .sepa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 50px 10px 10px;
+    margin: 0 0 0 50px;
+
+}
+
+.about-why .body .sepa h1 {
+    font-size: 44px;
+    font-weight: 600;
+    font-family: 'Poppins',
+        sans-serif;
+}
+
+.about-why .body .sepa h3 {
+    font-size: 24px;
+    font-weight: 400;
+
+}
+
+.about-why .body .sepa p {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 300;
+    font-family: 'Montserrat',
+        sans-serif;
+    line-height: 24px;
+}
+
+/* 
+energy */
+
+.energy {
+    width: 100%;
+    height: 700px;
+    background: url('../img/bg.svg') no-repeat center center/ cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.energy .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.energy .body p {
+    font-size: 24px;
+    font-weight: 300;
+    font-family: 'Montserrat',
+        sans-serif;
+    line-height: 38px;
+}
+
+/* 
+built */
+
+.built {
+    width: 100%;
+    min-height: 500px;
+    margin: 70px 0;
+}
+
+.built .title h1 {
+
+    font-size: 44px;
+    font-family: 'Poppins',
+        sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+
+
+}
+
+.built .title h3 {
+    font-weight: 400;
+    font-size: 24px;
+    font-family: 'Poppins',
+        sans-serif;
+
+
+}
+
+.built .body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(500px, auto);
+    grid-gap: 50px;
+    color: var(--white);
+
+}
+
+.built .body .boxed1 {
+    background: url('../img/helmet.png') no-repeat center center/cover;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.built .body .boxed1 p {
+    z-index: 10;
+    font-family: 'Poppins',
+        sans-serif;
+    font-size: 24px;
+    color: var(--orange);
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.built .body .boxed1::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    content: '';
+    left: 0;
+
+    top: 0;
+    z-index: 2;
+
+}
+
+.built .body .boxed2 {
+    width: 100%;
+    position: relative;
+    background: url('../img/shirt.png') no-repeat center center/cover;
+}
+
+.built .body .boxed2::after {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    content: '';
+    left: 0;
+    top: 0;
+
+}
+
+.built .body .boxed2 p {
+    z-index: 10;
+    font-size: 24px;
+    color: var(--orange);
+    display: flex;
+    font-family: 'Poppins',
+        sans-serif;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.built .body .boxed3 {
+    width: 100%;
+    position: relative;
+    background: url('../img/package.png') no-repeat center center/cover;
+}
+
+.built .body .boxed3::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    content: '';
+    left: 0;
+    top: 0;
+
+}
+
+.built .body .boxed3 p {
+    z-index: 10;
+    font-size: 24px;
+    font-family: 'Poppins',
+        sans-serif;
+    color: var(--orange);
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* smile */
+
+.smile {
+    width: 100%;
+    min-height: 300px;
+    margin: 80px 0;
+
+}
+
+.smile h1 {
+    font-family: 'Poppins',
+        sans-serif;
+    font-size: 44px;
+    font-weight: 600;
+    text-transform: capitalize;
+
+}
+
+.smile h3 {
+    font-family: 'Poppins',
+        sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+
+}
+
+.smile p {
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 32px;
+    padding: 10px 20px;
+}
+
+/* cont */
+
+.cont {
+    width: 100%;
+    background: url('../img/gen.svg') no-repeat center center/cover;
+    height: 300px;
+}
+
+
+@media only screen and (max-width:800px) {
+    .about-why .body {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+
+    .about-why .body .sepa {
+
+        padding: 10px 0 0 0;
+        margin: 10px 0 0 0;
+
+    }
+
+    .built .body {
+
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(800px, auto);
+
+    }
+
+}
+
+@media only screen and (max-width:500px) {
+    p {
+        font-size: 14px;
+    }
+
+    .about-hero {
+        width: 100%;
+        height: 400px;
+        background: var(--green);
+        color: var(--white);
+
+    }
+
+    .about-hero .contain {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(400px, auto);
+        grid-gap: 50px;
+        text-align: center;
+
+    }
+
+
+    .about-hero .contain h1 {
+        font-size: 34px;
+        font-family: 'Poppins',
+            sans-serif;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px 12px;
+
+    }
+
+    .about-hero .contain p {
+        font-size: 14px;
+        font-family: 'Montserrat',
+            sans-serif;
+
+        font-weight: lighter;
+        padding: 10px 12px;
+        text-align: left;
+    }
+
+    .about-hero .contain .descrip {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .about-hero .contain img {
+        width: 300px;
+        height: 250px;
+        display: none;
+    }
+
+
+    .sepa-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .energy {
+        width: 100%;
+        height: 700px;
+        background: url('../img/bg.svg') no-repeat center center/ cover;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .energy .body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .energy .body p {
+        font-size: 16px;
+        font-weight: 300;
+        font-family: 'Montserrat',
+            sans-serif;
+        line-height: 38px;
+    }
+
+
+    .about-why .body img {
+        width: 300px;
+        height: 250px;
+    }
+
+    .about-why .title h1 {
+
+        font-family: 'Poppins',
+            sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+
+    }
+
+    .about-why .body .sepa h1 {
+        font-size: 32px;
+        font-weight: 600;
+        font-family: 'Poppins',
+            sans-serif;
+    }
+
+    .built .title h1 {
+
+        font-size: 32px;
+        font-family: 'Poppins',
+            sans-serif;
+        font-weight: 600;
+        text-transform: capitalize;
+
+
+    }
+
+    .smile h1 {
+        font-family: 'Poppins',
+            sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        text-transform: capitalize;
+
+    }
+
+    .built .body {
+
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(400px, auto);
+
+    }
+}

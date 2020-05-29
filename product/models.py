@@ -134,7 +134,14 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+class Call(models.Model):
+    name = models.CharField(max_length=50)
+    phone = models.CharField(max_length=15)
+    email = models.EmailField()   
+
+    def __str__(self):
+        return self.name
     
     
 class CustomerInfo(models.Model):

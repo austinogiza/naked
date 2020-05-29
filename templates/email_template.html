@@ -1,5 +1,6 @@
 Hello {{name}},
-We have received your order of {{order_item.quantity }}{{order_item.item}} for {{amount}}.
+We have received your order of {% for order_item in order.items.all %} {{order_item.quantity }}{{order_item.item }} {% endfor %} for
+{{amount/100}}.
 
 We will contact you soon, thank you for choosing us.
 

@@ -105,6 +105,23 @@ class ContactForm(forms.Form):
     }), required=True)
 
 
+class CallForm(forms.Form):
+    name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control'
+
+    }), required=True)
+    email = forms.EmailField(widget=forms.TextInput(attrs={
+        'class': 'form-control'
+
+    }), required=True)
+    phone = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control'
+
+    }), required=True)
+    
+
+
+
 class CustomerInfoForm(forms.ModelForm):
     class Meta:
         model = CustomerInfo

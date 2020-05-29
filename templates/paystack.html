@@ -1,13 +1,13 @@
 {% extends 'prodbase.html' %}
-{% load static %} 
-{% load paystack %} 
+{% load static %}
+{% load paystack %}
 
 {% block style %}
 <title>Pay With Paystack</title>
 
 <link rel="stylesheet" href="{% static 'css/about.css'%}">
 
-{% endblock %} 
+{% endblock %}
 {% block content %}
 <main>
     <section class="about-hero">
@@ -38,8 +38,8 @@
 
                 <!--Card-->
                 <div class="card text-center">
-
-                 {% paystack_button amount=amount email=email button_class="btn btn-green" %} 
+  {% paystack_button amount=amount email=email  button_class='btn btn-green' %}
+                 
                     <!--Card content-->
 
                 </div>
@@ -87,15 +87,6 @@
         <!--Grid row-->
 
     </div>
-    <form method="POST">
-        {% csrf_token %}
-        <script src="https://js.paystack.co/v1/inline.js" 
-            data-key="pk_test_320e41039b2db6919cd963e88e48cab0246961d3"
-            data-email="{{email}}"
-            data-ref 
-            data-amount="{{amount}}"
-            data-user='{{user}}'>
-        </script>
-    </form>
+ 
 </main>
 <!--Main layout-->{% endblock%}

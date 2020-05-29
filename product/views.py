@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Item, Order, OrderItem, BillingAddress, Payment, ContactMessage
+from .models import Item, Order, OrderItem, BillingAddress, Payment, ContactMessage, Call
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
@@ -8,17 +8,14 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, ContactForm,CustomerInfoForm
+from .forms import CheckoutForm, ContactForm,CustomerInfoForm, CallForm
 from django.http import HttpResponse, JsonResponse
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from django.template.loader import get_template, render_to_string
 from paystack.signals import payment_verified
 from django.dispatch import receiver
-import datetime
 
-import pypaystack
-from pypaystack import Transaction
 # Create your views here.
 
 
@@ -90,7 +87,6 @@ class CheckoutView(View):
 
 class PaystackView(View):
      def get(self, *args, **kwargs):
-         customer_form = CustomerInfoForm()
          order = Order.objects.get(user=self.request.user, ordered=False)
          # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
          name = order.billing_address.name
@@ -101,7 +97,6 @@ class PaystackView(View):
          if order.billing_address:
              context ={
              'order': order,
-             'customer_form': customer_form,
              'amount':amount,
              'email':email,
              'name': name,
@@ -111,103 +106,69 @@ class PaystackView(View):
          else:
              messages.warning(self.request, "You have not added billing address")
              return redirect("product:checkout")
-     
-
-
-
-def checkout(request):
-        order = Order.objects.get(user=request.user, ordered=False)
-        # order_item = OrderItem.objects.get(user=self.request.user, ordered=False)
-        name = order.billing_address.name
-        amount = order.get_total() 
-         
-        user = request.user
-        email = request.user.email
-        context ={
-            'order': order,
-            'amount':amount,
-            'email':email,
-            'name': name,
-            'user': user
-            }   
-        if request.method == 'POST':
-            pypaystack.api_key = settings.PAYSTACK_SECRET_KEY
-            token = request.POST['reference']
-            try:
-                user_name = request.POST['user']
-                email = request.POST['email']
-                amount = request.POST['amount']
-                transactions=pypaystack.Transaction(authorization_key=pypaystack.api_key)
-                verification = transactions.verify(request.POST['reference'])
-                order = Order.objects.get(user=request.user, ordered=False)
-                ##create payment 
-                payment = Payment()
-                payment.reference = token
-                payment.amount = amount
-                payment.user = request.user
-                payment.timestap = timezone.now()
-                payment.save()
-             # ##assign payment to the order
-                order.ordered = True
-                order.payment = payment
-                order.save()
-                return redirect('product:shop')
-            except:
-                print("We could not fetch pypaystack details")
-        return render(request, 'paystack.html', context)
 
 
 @receiver(payment_verified)
-def on_payment_verified(sender, ref, amount,  **kwargs):
+def on_payment_verified(sender, ref, amount, **kwargs):
     """
     ref: paystack reference sent back.
     amount: amount in Naira.
     """
-   
-    # User = None
-    # if request.user.is_authenicated():
-    #     User = request.user 
-    # order = Order.objects.get(user=request.user, ordered=False)
-    # payment = Payment()
-    # payment.reference = ref
-    # payment.amount = amount
-    # payment.user = sender
-    # payment.timestap = timezone.now()
-    # payment.save()
-    # # ##assign payment to the order
-#    order.ordered = True
-#    order.payment = payment
-#    order.save()
-    #email = EmailMessage(
-          #     'Thank You For Choosing Us',
-          #     template,
-          #     settings.EMAIL_HOST_USER,
-          #     [email]
-           # )
-            # email.send()
+    print(sender,ref,amount)
+    return redirect('product:paystack-success')
+
+
+
+def paysuccess(request):
+    return render(request, 'paystack-success.html')
+
+
+def callback(request):
+    form = CallForm(request.POST)
+    context = {
+        'form':form
+        }
+    if form.is_valid():
+        name = form.cleaned_data.get('name')
+        email = form.cleaned_data.get('email')
+        phone = form.cleaned_data.get('phone')
     
+        template = get_template('call.txt')
+        content = {
+            'name': name,
+            "email": email,
+            "phone": phone,
+      
 
-# @receiver(payment_verified)
-# def on_payment_verified(sender, ref, amount, **kwargs):
-#     order = Order.objects.get(user=sender, ordered=False)
-#      ##create payment
-#     
-#     payment.user = sender
-#     payment.reference = ref
-#     payment.amount = amount
-#     payment.timestap = datetime.now()
-#     payment.save()
-#     template = render_to_string('email_template.html')
+        }
+        contet = template.render(content)
+        call = Call(
+            name = name,
+            email = email,
+            phone= phone,
+            
+            )
+        call.save()
+        send_mail(
+        'New Call Back Request Form From Nakedsolar Call Form',
+        contet,
+        email,
+        ['themajorresources@gmail.com']
+        )
+        return redirect('details:quote-success')
+        
     
-#     #       # # ##assign payment to the order
-#     order.ordered = True
-#     order.payment = payment
-#     order.save()
-#                
+    return render(request, 'call.html', context)
+
+def solar(request):
+    return render(request, 'solar.html')
+
+def inverter(request):
+    return render(request, 'inverter.html')
 
 
-    
-
+def battery(request):
+    return render(request, 'battery.html')
 
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self,  *args, **kwargs):

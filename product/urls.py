@@ -1,6 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 from . import views
 from .views import (HomeView,
  ItemDetailView, 
@@ -11,8 +12,13 @@ from .views import (HomeView,
  add_single_to_cart,
   remove_order_from_cart,
   CheckoutView,
-# PaystackView,
-checkout,
+  paysuccess,
+  callback,
+  battery,
+  solar,
+  inverter,
+PaystackView,
+# checkout,
  add_home_to_cart
                     )
 
@@ -36,11 +42,12 @@ urlpatterns = [
          remove_order_from_cart, name='remove-order-from-cart'),
      path('customer_info/', views.customer_info,
          name='customer_info'),
-      path('pay-paystack/',
-          views.checkout, name='pay-paystack'),
-         # path('customer_info', views.customer_info,
-        # name='customer_info')
-
-  
-
+     path('pay-paystack/',
+       PaystackView.as_view(), name='pay-paystack'),
+     path('paystack-success/', views.paysuccess, name='paystack-success'),
+     path('callback/', views.callback, name='callback'),
+     path('solar/', views.solar, name='solar'),
+     path('inverter/', views.inverter, name='inverter'),
+     path('battery/',views.battery, name='battery'),
+ 
 ]

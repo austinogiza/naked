@@ -1,0 +1,8 @@
+We just got a call me back mail from our Call form
+
+Contact Name: 
+{{ name }}
+Email:
+{{ email }}
+Phone:
+{{ phone  }}

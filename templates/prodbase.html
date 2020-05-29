@@ -32,7 +32,32 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     {% block style %}
     {% endblock %}
-
+<!-- Facebook Pixel Code -->
+<script>
+    ! function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1119347581767891');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1119347581767891&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -68,7 +93,7 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect" href="{% url 'details:home' %}">
                     <strong class="blue-text">
-                        <img src="{% static 'img/faq.svg' %}" class="" alt="avatar image" height="45">
+                        <img src="{% static 'img/looog.svg' %}" class="" alt="avatar image" height="45">
                     </strong>
                 </a>
 
@@ -76,7 +101,7 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <a class="btn btn-green" href="{% url 'details:quote' %}">Get Free Quote
+                    <a class="btn btn-green" href="{% url 'details:quote' %}">Get Quote
                     </a>
                     <span class="navbar-toggler-icon"></span>
 
@@ -124,11 +149,20 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
                                 <a class="dropdown-item" href="{% url 'details:phcn'%}">PHCN Tariff</a>
 
                                 <a class="dropdown-item" href="{% url 'details:faq'%}">FAQ</a>
+                                <a class="dropdown-item" href="{% url 'product:contact'%}">Contact Us</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'product:contact' %}">Contact Us</a>
-                        </li>
+                       <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"> Solar PV
+                           </a>
+                           <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                               <a class="dropdown-item" href="{% url 'product:solar' %}">Solar Panels</a>
+                               <a class="dropdown-item" href="{% url 'product:inverter'%}">Inverters</a>
+                               <a class="dropdown-item" href="{% url 'product:battery'%}">Batteries</a> 
+                                 <a class="dropdown-item" href="{% url 'details:operation'%}"> Inverter Operation</a>
+                           </div>
+                       </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'details:quote' %}">Get Free Quote</a>
                         </li>
@@ -278,6 +312,23 @@ solar power prices in Nigeria, inverter prices in lagos Nigeria, solar energy in
     <script src="{% static 'js/top.js'%}"></script>
 
     {% block js %} {% endblock %}
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5e7f724735bcbb0c9aab5f86/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
 </body>
 
 </html>

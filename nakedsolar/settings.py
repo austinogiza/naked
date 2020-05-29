@@ -30,14 +30,14 @@ INSTALLED_APPS = [
     'django_countries',
     'crispy_forms',
     'sorl.thumbnail',
-    "paystack",
-    # 'django_paystack',
+   
+    'paystack',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'details',
-    'pypaystack'
+    'details'
+ 
 
 ]
 
@@ -159,13 +159,13 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/accounts/login'
 
-LOGIN_REDIRECT_URL ='/'
+LOGIN_REDIRECT_URL ='/shop'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_SUBJECT_PREFIX = "Nakedsolar.ng "
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
-PAYSTACK_SUCCESS_URL = '/'
+PAYSTACK_SUCCESS_URL = 'paystack-success/'
 PAYSTACK_FAILED_URL = 'shop/'
 
 ### Email settings

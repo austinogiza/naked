@@ -1,0 +1,100 @@
+{% extends 'prodbase.html'%}
+{% load static %}
+{% block style %}
+<title>Let's Us Call You Back</title>
+<link rel="stylesheet" href="{% static 'css/map.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css'%}">
+{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+
+    <div class="contain container mt-4">
+        <div class="descrip">
+            <h1>Let's Us Call You Back</h1>
+            <p>We will give you a call </p>
+        </div>
+        <div class="image"><img src="{% static 'img/faq.svg'%}" alt="Naked solar"></div>
+    </div>
+
+</section>
+<!--Section: Contact v.2-->
+
+
+<section class="mt-4 mb-4 container">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center mt-4 ">Get A Call Back</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-2">We’ll need to have a discussion </p>
+    <p class="text-center w-responsive mx-auto mb-5">to establish your needs </p>
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-12 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="{% url 'product:callback' %}" method="POST">
+                {% csrf_token %}
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <!-- <input type="text" id="name" name="name" class="form-control"> -->
+                            {{ form.name }}
+
+                            <label for="name" class="">Your name</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <!-- <input type="text" id="email" name="email" class="form-control"> -->
+                            {{ form.email }}
+                            <label for="email" class="">Your email</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <!-- <input type="text" id="subject" name="subject" class="form-control"> -->
+                            {{ form.phone}}
+                            <label for="subject" class="">Phone</label>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+     
+                <!--Grid row-->
+                <!--Grid row-->
+            
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <button class="col-12 btn btn-green" type="submit">Send</button>
+            </form>
+
+            <div class="text-center text-md-left">
+
+
+            </div>
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+
+    </div>
+
+</section>
+<!--Section: Contact v.2-->
+
+
+<!--Google Maps-->
+{% endblock%}

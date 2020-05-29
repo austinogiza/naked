@@ -19,7 +19,8 @@ urlpatterns = [
 
    path('maintenance/', views.maintenance, name='maintenance'),
    path('installation/', views.installation, name='installation'),
-      path('gallery/', views.gallery, name='gallery'),
+    path('gallery/', views.gallery, name='gallery'),
+    path('operation/', views.operation, name='operation'),
    
 
        path('contact-success/', views.success, name='contact-success'),

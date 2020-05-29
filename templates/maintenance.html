@@ -54,7 +54,7 @@
 
                 </div>
                 <div class="sepa-image">
-                    <img src="{% static 'img/main.jpeg'%}" alt="">
+                    <img src="{% static 'img/clean.png'%}" alt="">
                 </div>
             </div>
         </div>
@@ -204,6 +204,28 @@
             </div>
         </div>
     </section>
+
+<section class="callback">
+
+    <div class="contain"><a href="{% url 'product:callback' %}" class="call-btn let-btn">Let Us Call You Back</a>
+        <a href="{% url 'details:installation' %}" class="call-btn sol-btn">Installation Options</a></div>
+</section>
+
+<section class="formerly mt-4 mb-4">
+    <div class="container">
+        <div class="box-8">
+            <h1>Call <a href="tel:+2348143139245">0814 313 9245</a></h1>
+            <p>Suite A12, Abraham Plaza, Plot 6 Ekukinam Street, Utako District, Utako, Abuja (FCT), Nigeria</p>
+            <p><a href="mailto:info@nakedsolar.ng">info@nakedsolar.ng</a></p>
+        </div>
+        <div class="box-8">
+            <h1>As at 2020, Proudly </h1><img src="{% static 'img/faq.svg' %}" alt="">
+        </div>
+        <div class="box-8">
+            <h1>FORMERLY KNOWN AS...</h1><img src="{% static 'img/major.jpg' %}" class="major" alt="">
+        </div>
+    </div>
+</section>
     <section class="cont text-center ">
 
         <a href="{% url 'product:contact' %}" type="button" class="btn orange mt-5">Contact Us</a>
